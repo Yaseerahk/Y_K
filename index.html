@@ -5,33 +5,23 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#0b1020">
-<meta name="description" content="Yaseerah Kader's portfolio showcasing software engineering, data engineering, data analytics, and data quality projects.">
+<meta name="description" content="Yaseerah Kader's software engineering, data engineering and analytics portfolio.">
 <title>Yaseerah Kader | Software & Data Engineer</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
-    --bg-main: #0b1020;
-    --bg-deep: #111a2f;
-    --bg-card: rgba(18,26,45,.82);
-    --accent-cyan: #72f1ff;
-    --accent-blue: #6c8bff;
-    --accent-purple: #ff78d1;
-    --accent-yellow: #ffd166;
-    --accent-green: #8af7b6;
-    --text-primary: #edf8ff;
-    --text-secondary: #c3d7ef;
-    --text-muted: #88a0c6;
-    --border-color: rgba(255,255,255,.12);
-    --border-hover: rgba(114,241,255,.7);
-    --radius-lg: 22px;
-    --radius-md: 16px;
-    --radius-sm: 10px;
-    --shadow-soft: 0 18px 40px rgba(7,11,20,.45);
+    --bg: #0b1020;
+    --panel: #131d32;
+    --cyan: #72f1ff;
+    --purple: #ff78d1;
+    --blue: #6c8bff;
+    --green: #8af7b6;
+    --yellow: #ffd166;
+    --text: #edf8ff;
+    --muted: #a2b7d4;
+    --border: rgba(255,255,255,.12);
 }
 
 * {
@@ -42,1001 +32,1082 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-padding-top: 90px;
+    scroll-padding-top: 85px;
 }
 
 body {
-    font-family: 'Plus Jakarta Sans', sans-serif;
     background:
-        radial-gradient(circle at top left,rgba(114,241,255,.15),transparent 26%),
-        radial-gradient(circle at bottom right,rgba(255,120,209,.12),transparent 24%),
-        linear-gradient(180deg,var(--bg-deep),var(--bg-main));
-    color: var(--text-primary);
-    line-height: 1.6;
+        radial-gradient(ellipse at 5% 0%, rgba(114,241,255,.12), transparent 35%),
+        radial-gradient(ellipse at 100% 40%, rgba(255,120,209,.08), transparent 30%),
+        var(--bg);
+    color: var(--text);
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.7;
     overflow-x: hidden;
 }
 
-::selection {
-    background: rgba(114,241,255,.28);
-}
-
-#fixed-bg {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 0;
-}
-
-#c {
-    width: 100%;
-    height: 100%;
-    display: block;
-}
-
-.glow-bg-1,
-.glow-bg-2 {
-    position: fixed;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
-    filter: blur(4px);
-}
-
-.glow-bg-1 {
-    top: -10%;
-    right: -5%;
-    width: 500px;
-    height: 500px;
-    background: radial-gradient(circle,rgba(114,241,255,.14),transparent 70%);
-}
-
-.glow-bg-2 {
-    bottom: 0;
-    left: -10%;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle,rgba(255,120,209,.11),transparent 70%);
+a {
+    color: inherit;
 }
 
 .container {
-    max-width: 1140px;
+    width: min(1140px, calc(100% - 40px));
     margin: auto;
-    padding: 0 24px;
-    position: relative;
-    z-index: 1;
 }
 
-.reveal {
-    opacity: 0;
-    transform: translateY(22px);
-    transition: opacity .7s ease, transform .7s ease;
-}
-
-.reveal.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.card-lift {
-    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-}
-
-.card-lift:hover {
-    transform: translateY(-5px);
-    border-color: var(--border-hover);
-    box-shadow: 0 18px 35px rgba(0,0,0,.25);
-}
-
-/* Navigation */
 header {
     position: sticky;
     top: 0;
-    z-index: 100;
-    background: rgba(8,12,20,.92);
+    z-index: 10;
+    background: rgba(11,16,32,.94);
     backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border);
 }
 
 .nav-inner {
+    min-height: 76px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    min-height: 72px;
     gap: 20px;
 }
 
-.brand-logo {
-    font-size: 1.15rem;
+.brand {
+    color: var(--text);
+    text-decoration: none;
     font-weight: 800;
-    color: #f4fbff;
-    text-decoration: none;
+    font-size: 1.05rem;
+}
+
+.brand span {
+    color: var(--cyan);
+}
+
+nav ul {
     display: flex;
-    align-items: center;
-    gap: 8px;
     flex-wrap: wrap;
-}
-
-.brand-badge {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .65rem;
-    background: rgba(114,241,255,.08);
-    color: var(--accent-cyan);
-    padding: 3px 8px;
-    border-radius: 20px;
-    border: 1px solid rgba(114,241,255,.35);
-}
-
-.nav-links {
-    display: flex;
-    gap: 20px;
+    gap: 18px;
     list-style: none;
-    flex-wrap: wrap;
 }
 
-.nav-links a {
-    color: #dfeaf9;
+nav a {
     text-decoration: none;
-    font-size: .85rem;
-    transition: color .2s;
+    color: var(--muted);
+    font-size: .82rem;
 }
 
-.nav-links a:hover {
-    color: var(--accent-cyan);
+nav a:hover {
+    color: var(--cyan);
 }
 
-/* Hero */
-.hero-section {
-    padding: 80px 0 60px;
+section {
+    padding: 76px 0;
+    border-top: 1px solid var(--border);
+}
+
+.hero {
+    border-top: 0;
+    min-height: 550px;
     display: grid;
-    grid-template-columns: minmax(0,1fr) 320px;
-    gap: 48px;
+    grid-template-columns: 1.5fr .8fr;
     align-items: center;
-    border-top: none;
+    gap: 45px;
 }
 
-.hero-badge-available {
+.availability {
     display: inline-flex;
+    gap: 9px;
     align-items: center;
-    gap: 8px;
-    background: rgba(114,241,255,.08);
-    color: var(--accent-cyan);
-    border: 1px solid rgba(114,241,255,.4);
-    padding: 6px 14px;
+    border: 1px solid rgba(138,247,182,.3);
+    background: rgba(138,247,182,.06);
+    color: var(--green);
     border-radius: 30px;
-    font-size: .78rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+    padding: 7px 13px;
+    font-size: .75rem;
+    margin-bottom: 22px;
 }
 
-.pulse-dot {
+.availability::before {
+    content: "";
     width: 8px;
     height: 8px;
-    background: var(--accent-green);
+    background: var(--green);
     border-radius: 50%;
-    box-shadow: 0 0 10px var(--accent-green);
+    box-shadow: 0 0 10px var(--green);
 }
 
-.hero-title {
-    font-size: clamp(2.3rem,5vw,3.4rem);
-    font-weight: 900;
+h1 {
+    font-size: clamp(2.5rem, 6vw, 4.4rem);
     line-height: 1.1;
-    letter-spacing: -1px;
-    margin-bottom: 15px;
-    text-transform: uppercase;
-    background: linear-gradient(135deg,#f9fbff,var(--accent-cyan) 40%,var(--accent-purple));
-    -webkit-background-clip: text;
-    background-clip: text;
+    letter-spacing: -.05em;
+    background: linear-gradient(120deg, white, var(--cyan), var(--purple));
     color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    margin-bottom: 18px;
 }
 
 .hero-subtitle {
-    font-size: .9rem;
-    font-weight: 700;
-    color: var(--accent-yellow);
-    margin-bottom: 20px;
-    letter-spacing: .05em;
-    text-transform: uppercase;
+    color: var(--yellow);
     font-family: 'JetBrains Mono', monospace;
+    font-size: .9rem;
+    margin-bottom: 20px;
 }
 
-.hero-summary {
-    color: var(--text-secondary);
-    font-size: 1rem;
-    line-height: 1.8;
-    margin-bottom: 28px;
+.hero-description {
+    color: var(--muted);
+    max-width: 700px;
+    margin-bottom: 25px;
 }
 
-.hero-cta-group {
+.actions {
     display: flex;
     flex-wrap: wrap;
     gap: 12px;
-    align-items: center;
 }
 
-.btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 12px 20px;
-    border-radius: var(--radius-md);
-    font-size: .9rem;
+.button {
+    display: inline-block;
+    padding: 11px 17px;
+    border-radius: 10px;
+    border: 1px solid rgba(114,241,255,.35);
+    background: rgba(114,241,255,.07);
+    color: var(--cyan);
     font-weight: 700;
+    font-size: .85rem;
     text-decoration: none;
-    transition: all .25s;
-    cursor: pointer;
-    border: none;
+    transition: .2s ease;
 }
 
-.btn-primary {
-    background: linear-gradient(135deg,var(--accent-yellow),var(--accent-purple),var(--accent-blue));
-    color: #0c1326;
+.button.primary {
+    background: linear-gradient(120deg, var(--cyan), #b5f7ff);
+    color: #091321;
+    border-color: transparent;
 }
 
-.btn-secondary {
-    background: rgba(13,18,29,.7);
-    color: var(--text-primary);
-    border: 1px solid rgba(114,241,255,.3);
-}
-
-.btn:hover {
+.button:hover {
     transform: translateY(-2px);
-    filter: brightness(1.08);
-}
-
-.contact-info-pills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 24px;
-}
-
-.info-pill {
-    background: rgba(255,255,255,.03);
-    border: 1px solid var(--border-color);
-    padding: 6px 11px;
-    border-radius: var(--radius-sm);
-    font-size: .8rem;
-    color: var(--text-secondary);
-    overflow-wrap: anywhere;
+    filter: brightness(1.12);
 }
 
 .profile-card {
-    background: linear-gradient(180deg,rgba(24,34,55,.96),rgba(13,19,31,.98));
-    border: 1px solid rgba(114,241,255,.22);
-    border-radius: var(--radius-lg);
-    padding: 24px;
+    padding: 28px;
+    border: 1px solid rgba(114,241,255,.25);
+    border-radius: 22px;
     text-align: center;
-    box-shadow: var(--shadow-soft);
+    background: linear-gradient(145deg, rgba(25,38,62,.9), rgba(14,21,36,.96));
+    box-shadow: 0 20px 50px rgba(0,0,0,.25);
 }
 
-.profile-avatar-wrapper {
-    width: 130px;
-    height: 130px;
+.profile-monogram {
+    width: 115px;
+    height: 115px;
     margin: 0 auto 20px;
     border-radius: 50%;
-    padding: 4px;
-    background: linear-gradient(135deg,var(--accent-cyan),var(--accent-purple));
+    display: grid;
+    place-items: center;
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: var(--cyan);
+    border: 2px solid var(--cyan);
+    background: radial-gradient(circle at top left, #283b59, #101729);
+    box-shadow: 0 0 35px rgba(114,241,255,.12);
 }
 
-.profile-avatar-wrapper img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    display: block;
+.profile-card p {
+    color: var(--muted);
+    font-size: .85rem;
 }
 
-.stat-grid {
+.stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
-    margin-top: 20px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-color);
+    margin-top: 22px;
 }
 
-.stat-box {
-    background: rgba(255,255,255,.02);
-    padding: 12px;
-    border-radius: var(--radius-md);
-    border: 1px solid var(--border-color);
+.stat {
+    padding: 13px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    background: rgba(255,255,255,.025);
 }
 
-.stat-value {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: var(--accent-cyan);
-}
-
-.stat-label {
-    font-size: .7rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-}
-
-/* Sections */
-section {
-    padding: 60px 0;
-    border-top: 1px solid var(--border-color);
-}
-
-.section-header {
-    margin-bottom: 35px;
-}
-
-.section-tag {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .78rem;
-    color: var(--accent-cyan);
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 8px;
+.stat strong {
     display: block;
+    color: var(--cyan);
+    font-size: 1.4rem;
+}
+
+.stat span {
+    color: var(--muted);
+    font-size: .68rem;
+    text-transform: uppercase;
+}
+
+.section-label {
+    display: block;
+    color: var(--cyan);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: .75rem;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
 }
 
 .section-title {
-    font-size: clamp(1.7rem,4vw,2rem);
-    font-weight: 800;
-    letter-spacing: -.5px;
-    text-transform: uppercase;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.25;
+    margin-bottom: 30px;
 }
 
 /* Skills */
-.skills-tabs {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 28px;
-    flex-wrap: wrap;
-}
-
-.tab-btn {
-    background: rgba(255,255,255,.04);
-    border: 1px solid var(--border-color);
-    color: var(--text-secondary);
-    padding: 8px 15px;
-    border-radius: 30px;
-    font-size: .78rem;
-    font-weight: 700;
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-}
-
-.tab-btn:hover,
-.tab-btn.active {
-    background: rgba(114,241,255,.12);
-    border-color: var(--accent-cyan);
-    color: var(--accent-cyan);
-}
 
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(min(100%,250px),1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
 }
 
-.skill-category-card {
-    background: linear-gradient(180deg,rgba(23,32,52,.9),rgba(15,20,34,.96));
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 22px;
+.skill-card {
+    background: rgba(19,29,50,.8);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 23px;
 }
 
-.skill-card-title {
-    font-size: 1.05rem;
-    font-weight: 700;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.skill-card h3 {
+    font-size: 1rem;
+    margin-bottom: 15px;
 }
 
-.skill-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 8px;
-    background: rgba(114,241,255,.12);
-    color: var(--accent-cyan);
-    display: grid;
-    place-items: center;
-}
-
-.skill-tags,
-.project-tags {
+.tags {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
 }
 
-.skill-tag {
-    background: rgba(114,241,255,.05);
+.tag {
+    display: inline-block;
+    padding: 5px 9px;
     border: 1px solid rgba(114,241,255,.18);
-    color: var(--text-secondary);
-    font-size: .75rem;
-    padding: 4px 9px;
-    border-radius: var(--radius-sm);
-    font-family: 'JetBrains Mono', monospace;
+    border-radius: 7px;
+    color: #c9deee;
+    background: rgba(114,241,255,.04);
+    font: .7rem 'JetBrains Mono', monospace;
 }
 
-/* Project cards */
+/* Project layout */
+
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(min(100%,460px),1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
 }
 
 .project-card {
-    display: grid;
-    grid-template-columns: minmax(0,1fr) minmax(0,1fr);
     min-width: 0;
     overflow: hidden;
-    background: linear-gradient(145deg,rgba(23,32,52,.96),rgba(15,20,34,.98));
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(24,36,59,.95), rgba(13,20,35,.98));
+    transition: transform .25s, border-color .25s, box-shadow .25s;
 }
 
-.project-preview {
-    min-height: 280px;
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(114,241,255,.5);
+    box-shadow: 0 20px 45px rgba(0,0,0,.22);
+}
+
+/* Every project illustration is drawn in this HTML.
+   No img elements, image URLs or image file paths are required. */
+
+.project-visual {
+    min-height: 270px;
     padding: 22px;
     display: grid;
     place-items: center;
-    background: linear-gradient(145deg,#34213a,#171c31 70%);
-    min-width: 0;
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(114,241,255,.1), transparent 40%),
+        #0c1425;
+    border-bottom: 1px solid var(--border);
+}
+
+.project-visual::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: .28;
+    pointer-events: none;
+    background-image: radial-gradient(rgba(114,241,255,.4) .7px, transparent .7px);
+    background-size: 18px 18px;
+}
+
+.visual-window {
+    position: relative;
+    width: 100%;
+    max-width: 370px;
+    border: 1px solid rgba(114,241,255,.23);
+    background: rgba(11,17,31,.95);
+    border-radius: 14px;
+    padding: 17px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.25);
+}
+
+.visual-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 16px;
+    color: var(--text);
+    font: .72rem 'JetBrains Mono', monospace;
+}
+
+.visual-status {
+    color: var(--green);
+    font-size: .65rem;
+}
+
+.visual-node {
+    padding: 11px;
+    border-radius: 9px;
+    border: 1px solid rgba(114,241,255,.19);
+    background: rgba(114,241,255,.045);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.node-icon {
+    display: grid;
+    place-items: center;
+    width: 37px;
+    height: 37px;
+    flex-shrink: 0;
+    border-radius: 9px;
+    color: var(--cyan);
+    background: rgba(114,241,255,.1);
+    font-size: 1.05rem;
+}
+
+.node-copy strong {
+    display: block;
+    font-size: .78rem;
+}
+
+.node-copy small {
+    display: block;
+    margin-top: 3px;
+    color: var(--muted);
+    font-size: .66rem;
+}
+
+.flow-arrow {
+    height: 24px;
+    padding-left: 25px;
+    color: var(--cyan);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.result-panel {
+    margin-top: 13px;
+    padding: 12px;
+    border: 1px solid rgba(138,247,182,.22);
+    border-radius: 9px;
+    background: rgba(138,247,182,.055);
+}
+
+.result-panel strong {
+    display: block;
+    color: var(--green);
+    font: .72rem 'JetBrains Mono', monospace;
+}
+
+.result-panel small {
+    display: block;
+    color: var(--muted);
+    margin-top: 4px;
+    font-size: .68rem;
+}
+
+/* Retro photobooth: code-drawn interface */
+
+.booth-visual {
+    background:
+        radial-gradient(circle at 80% 20%, rgba(255,120,209,.15), transparent 40%),
+        #161324;
+}
+
+.booth-window {
+    position: relative;
+    width: 100%;
+    max-width: 340px;
+    padding: 15px;
+    background: #11101d;
+    border: 1px solid rgba(255,120,209,.4);
+    border-radius: 16px;
+    box-shadow: 0 18px 45px rgba(0,0,0,.35);
+    transform: rotate(-1deg);
+}
+
+.booth-title {
+    text-align: center;
+    font-size: .95rem;
+    letter-spacing: .12em;
+    font-weight: 800;
+    color: var(--purple);
+    margin-bottom: 12px;
+}
+
+.booth-screen {
+    height: 128px;
+    border: 5px solid #282538;
+    border-radius: 10px;
+    background:
+        radial-gradient(ellipse at 50% 75%, #a64e91 0%, transparent 40%),
+        linear-gradient(140deg, #27223e, #0b1121);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.booth-screen::before {
+    content: "";
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    position: absolute;
+    top: 15px;
+    background: #ffd5e9;
+    box-shadow: 0 48px 0 16px #d77fb7;
+}
+
+.booth-screen::after {
+    content: "LIVE PREVIEW";
+    position: absolute;
+    bottom: 7px;
+    left: 8px;
+    font: .58rem 'JetBrains Mono', monospace;
+    color: white;
+}
+
+.booth-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 7px;
+    margin-top: 12px;
+}
+
+.booth-frame {
+    height: 53px;
+    border: 2px solid #fff0fa;
+    border-radius: 4px;
+    background: linear-gradient(150deg, #ffb6d9, #604778);
+    position: relative;
     overflow: hidden;
 }
 
-.project-preview-etl {
-    background: #f4f7fb;
+.booth-frame:nth-child(2) {
+    background: linear-gradient(150deg, #c8d8ff, #504879);
 }
 
-.project-preview-quality {
-    background: #0b1220;
+.booth-frame:nth-child(3) {
+    background: linear-gradient(150deg, #ffd6a1, #7b4b7b);
 }
 
-/* Existing project images */
-.project-preview-image {
-    display: block;
-    width: 100%;
-    height: 100%;
-    max-height: 320px;
-    object-fit: contain;
+.booth-frame::before {
+    content: "";
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.8);
+    top: 7px;
+    left: calc(50% - 8px);
 }
 
-/* Fallback displays appear only if an image fails */
-.image-fallback {
-    width: 100%;
-    min-height: 220px;
-    display: none;
-    place-content: center;
-    justify-items: center;
+.booth-frame::after {
+    content: "";
+    position: absolute;
+    width: 31px;
+    height: 28px;
+    border-radius: 50% 50% 0 0;
+    background: rgba(24,22,43,.8);
+    bottom: -7px;
+    left: calc(50% - 15px);
+}
+
+.booth-controls {
+    display: flex;
+    justify-content: space-between;
     gap: 10px;
-    padding: 20px;
+    margin-top: 12px;
+    color: var(--muted);
+    font: .63rem 'JetBrains Mono', monospace;
+}
+
+.booth-button {
+    color: #180f23;
+    font-weight: 800;
+    background: var(--purple);
+    padding: 5px 9px;
+    border-radius: 20px;
+}
+
+/* Mini ETL: code-drawn pipeline */
+
+.etl-visual {
+    background:
+        radial-gradient(circle at 80% 10%, rgba(108,139,255,.16), transparent 40%),
+        #10172a;
+}
+
+.etl-window {
+    width: 100%;
+    max-width: 390px;
+    padding: 17px;
+    background: rgba(10,16,30,.95);
+    border: 1px solid rgba(108,139,255,.35);
+    border-radius: 14px;
+}
+
+.etl-heading {
+    font: .72rem 'JetBrains Mono', monospace;
+    color: var(--blue);
+    margin-bottom: 15px;
+}
+
+.etl-flow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    align-items: center;
+    gap: 8px;
+}
+
+.etl-stage {
+    min-height: 105px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: var(--text-primary);
-    background: linear-gradient(145deg,#111a2f,#18243b);
-    border: 1px solid rgba(114,241,255,.2);
-    border-radius: 12px;
+    gap: 8px;
+    padding: 8px 4px;
+    border: 1px solid rgba(108,139,255,.35);
+    border-radius: 10px;
+    background: rgba(108,139,255,.07);
 }
 
-.image-fallback span {
-    font-size: 2.5rem;
+.etl-stage-icon {
+    font-size: 1.55rem;
+    color: var(--blue);
 }
 
-.image-fallback strong {
-    color: var(--accent-cyan);
+.etl-stage strong {
+    font-size: .69rem;
 }
 
-.image-fallback small {
-    color: var(--text-secondary);
+.etl-stage small {
+    color: var(--muted);
+    font-size: .57rem;
+}
+
+.etl-connector {
+    height: 2px;
+    background: var(--cyan);
+    position: relative;
+}
+
+.etl-connector::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -4px;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 6px solid var(--cyan);
+}
+
+.etl-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 10px;
+    margin-top: 14px;
+    border-radius: 8px;
+    background: rgba(114,241,255,.06);
+    color: var(--muted);
+    font-size: .66rem;
+}
+
+.etl-footer strong {
+    color: var(--green);
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Data Quality Monitoring: code-drawn dashboard */
+
+.monitor-visual {
+    background:
+        radial-gradient(circle at 20% 20%, rgba(138,247,182,.1), transparent 40%),
+        #0c1720;
+}
+
+.monitor-window {
+    width: 100%;
+    max-width: 390px;
+    padding: 17px;
+    border: 1px solid rgba(138,247,182,.24);
+    border-radius: 14px;
+    background: rgba(9,16,25,.96);
+}
+
+.monitor-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 15px;
+    font: .7rem 'JetBrains Mono', monospace;
+}
+
+.monitor-heading span:last-child {
+    color: var(--green);
+    font-size: .62rem;
+}
+
+.monitor-metrics {
+    display: grid;
+    grid-template-columns: repeat(3,minmax(0,1fr));
+    gap: 8px;
+}
+
+.metric {
+    padding: 11px 5px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: rgba(255,255,255,.025);
+}
+
+.metric strong {
+    display: block;
+    font-size: 1.15rem;
+    color: var(--green);
+}
+
+.metric:nth-child(2) strong {
+    color: var(--yellow);
+}
+
+.metric:nth-child(3) strong {
+    color: var(--purple);
+}
+
+.metric small {
+    display: block;
+    color: var(--muted);
+    font-size: .58rem;
+}
+
+.monitor-chart-title {
+    margin: 18px 0 10px;
+    color: var(--muted);
+    font-size: .68rem;
+}
+
+.chart-bars {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    height: 72px;
+    padding: 0 8px;
+    border-bottom: 1px solid var(--border);
+}
+
+.chart-bar {
+    flex: 1;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(180deg, var(--green), rgba(138,247,182,.15));
+}
+
+.check-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 9px;
+    color: var(--muted);
+    font-size: .68rem;
+}
+
+.check-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--green);
+    flex-shrink: 0;
+}
+
+.check-dot.warning {
+    background: var(--yellow);
+}
+
+/* Batch pipeline: code-drawn diagram */
+
+.batch-visual {
+    background:
+        radial-gradient(circle at 15% 15%, rgba(114,241,255,.13), transparent 38%),
+        #0c1425;
+}
+
+.batch-window {
+    width: 100%;
+    max-width: 390px;
+    padding: 16px;
+    border: 1px solid rgba(114,241,255,.22);
+    border-radius: 15px;
+    background: rgba(9,15,28,.95);
+    box-shadow: 0 18px 40px rgba(0,0,0,.25);
+}
+
+.batch-heading {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    font: .69rem 'JetBrains Mono', monospace;
+    margin-bottom: 15px;
+}
+
+.batch-heading span:last-child {
+    color: var(--green);
+    font-size: .61rem;
+}
+
+.batch-step {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 10px;
+    border: 1px solid rgba(114,241,255,.16);
+    border-radius: 9px;
+    background: rgba(114,241,255,.035);
+}
+
+.batch-step-icon {
+    width: 35px;
+    height: 35px;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+    background: rgba(114,241,255,.1);
+    color: var(--cyan);
+    font-size: 1.05rem;
+}
+
+.batch-step strong {
+    display: block;
+    font-size: .74rem;
+}
+
+.batch-step small {
+    display: block;
+    color: var(--muted);
+    font-size: .62rem;
+    margin-top: 2px;
+}
+
+.batch-arrow {
+    height: 21px;
+    padding-left: 22px;
+    color: var(--cyan);
+    font: .8rem 'JetBrains Mono', monospace;
+}
+
+.batch-summary {
+    margin-top: 13px;
+    padding: 11px;
+    border: 1px solid rgba(138,247,182,.22);
+    border-radius: 9px;
+    background: rgba(138,247,182,.055);
+}
+
+.batch-summary strong {
+    color: var(--green);
+    font: .68rem 'JetBrains Mono', monospace;
+}
+
+.batch-summary p {
+    color: var(--muted);
+    font-size: .65rem;
+    margin-top: 4px;
 }
 
 .project-content {
     padding: 25px;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    min-width: 0;
+    flex: 1;
 }
 
 .project-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 14px;
+    align-self: flex-start;
+    margin-bottom: 13px;
     padding: 5px 10px;
-    border: 1px solid rgba(138,247,182,.25);
     border-radius: 30px;
-    background: rgba(138,247,182,.08);
-    color: var(--accent-green);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .68rem;
+    color: var(--green);
+    background: rgba(138,247,182,.06);
+    border: 1px solid rgba(138,247,182,.2);
+    font: .65rem 'JetBrains Mono', monospace;
     text-transform: uppercase;
 }
 
-.project-status::before {
-    content: '';
-    width: 7px;
-    height: 7px;
-    border-radius: 50%;
-    background: currentColor;
-}
-
 .project-title {
+    font-size: 1.25rem;
+    line-height: 1.4;
     margin-bottom: 12px;
-    font-size: 1.3rem;
-    font-weight: 800;
-    overflow-wrap: anywhere;
 }
 
 .project-description-list {
-    margin-bottom: 20px;
-    padding-left: 19px;
-    color: var(--text-secondary);
-    font-size: .86rem;
+    color: var(--muted);
+    font-size: .83rem;
+    padding-left: 18px;
+    margin-bottom: 18px;
 }
 
 .project-description-list li {
+    margin-bottom: 7px;
     padding-left: 3px;
-    margin-bottom: 8px;
 }
 
 .project-description-list li::marker {
-    color: var(--accent-cyan);
+    color: var(--cyan);
+}
+
+.project-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    margin-top: auto;
 }
 
 .project-links {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 20px;
+    margin-top: 18px;
 }
 
-.project-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 7px;
-    padding: 9px 13px;
-    border-radius: 9px;
-    border: 1px solid rgba(114,241,255,.28);
-    background: rgba(114,241,255,.06);
-    color: var(--accent-cyan);
-    font-size: .8rem;
-    font-weight: 700;
-    text-decoration: none;
-    transition: background .2s;
-}
+/* Experience */
 
-.project-link:hover {
-    background: rgba(114,241,255,.15);
-}
-
-/* Retro photobooth preview */
-.booth-preview {
-    width: min(100%,310px);
-    padding: 12px;
-    border: 1px solid rgba(255,255,255,.18);
-    border-radius: 14px;
-    background: rgba(10,14,25,.88);
-    box-shadow: 0 18px 38px rgba(0,0,0,.36);
-    transform: rotate(-2deg);
-}
-
-.booth-preview-header {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    padding: 8px 10px;
-    border-radius: 8px;
-    background: rgba(255,255,255,.06);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .7rem;
-}
-
-.booth-preview-status {
-    color: var(--accent-green);
-    font-size: .62rem;
-}
-
-.booth-preview-screen {
-    min-height: 130px;
-    margin: 10px 0;
-    display: grid;
-    place-items: center;
-    border: 5px solid #252333;
-    border-radius: 10px;
-    background: linear-gradient(145deg,#181722,#090b12);
-    font-size: 2.2rem;
-}
-
-.booth-preview-controls {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    color: var(--text-secondary);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .58rem;
-}
-
-.booth-preview-button {
-    padding: 5px 8px;
-    border-radius: 20px;
-    background: #ff6f91;
-    color: #17101a;
-    font-weight: 800;
-}
-
-/* Batch Data Quality Pipeline visual */
-.project-preview-batch {
-    background:
-        radial-gradient(circle at 15% 15%,rgba(114,241,255,.13),transparent 38%),
-        linear-gradient(145deg,#101a2d,#090e1a);
-}
-
-.batch-pipeline-visual {
-    width: 100%;
-    max-width: 390px;
-    padding: 16px;
-    border: 1px solid rgba(114,241,255,.2);
-    border-radius: 16px;
-    background: rgba(9,15,28,.85);
-}
-
-.batch-visual-heading {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 15px;
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .68rem;
-}
-
-.batch-live-status {
-    color: var(--accent-green);
-    font-size: .62rem;
-}
-
-.batch-step {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px;
-    border: 1px solid rgba(114,241,255,.15);
-    border-radius: 10px;
-    background: rgba(255,255,255,.035);
-}
-
-.batch-step-icon {
-    display: grid;
-    place-items: center;
-    width: 34px;
-    height: 34px;
-    flex-shrink: 0;
-    border-radius: 9px;
-    background: rgba(114,241,255,.1);
-    color: var(--accent-cyan);
-    font-size: 1rem;
-}
-
-.batch-step strong {
-    display: block;
-    font-size: .75rem;
-}
-
-.batch-step small {
-    display: block;
-    margin-top: 2px;
-    color: var(--text-muted);
-    font-size: .63rem;
-}
-
-.batch-flow-arrow {
-    height: 21px;
-    padding-left: 22px;
-    color: var(--accent-cyan);
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.batch-validation-result {
-    margin-top: 14px;
-    padding: 11px;
-    border: 1px solid rgba(138,247,182,.2);
-    border-radius: 10px;
-    background: rgba(138,247,182,.06);
-}
-
-.batch-validation-result strong {
-    color: var(--accent-green);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .7rem;
-}
-
-.batch-validation-result p {
-    margin-top: 4px;
-    color: var(--text-secondary);
-    font-size: .68rem;
-}
-
-/* Experience timeline */
 .timeline {
     position: relative;
-    padding-left: 28px;
+    padding-left: 26px;
 }
 
 .timeline::before {
-    content: '';
+    content: "";
     position: absolute;
-    left: 7px;
-    top: 5px;
-    bottom: 5px;
+    left: 6px;
+    top: 6px;
+    bottom: 10px;
     width: 2px;
-    background: linear-gradient(to bottom,var(--accent-cyan),var(--accent-purple),transparent);
+    background: linear-gradient(var(--cyan), var(--purple), transparent);
 }
 
 .timeline-item {
     position: relative;
-    margin-bottom: 35px;
+    margin-bottom: 25px;
 }
 
 .timeline-dot {
     position: absolute;
-    left: -28px;
-    top: 4px;
-    width: 16px;
-    height: 16px;
+    top: 7px;
+    left: -26px;
+    width: 14px;
+    height: 14px;
+    background: var(--bg);
+    border: 3px solid var(--cyan);
     border-radius: 50%;
-    background: var(--bg-main);
-    border: 3px solid var(--accent-cyan);
-    box-shadow: 0 0 10px var(--accent-cyan);
 }
 
 .timeline-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 22px;
+    padding: 23px;
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    background: rgba(19,29,50,.75);
 }
 
 .timeline-header {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 10px;
     margin-bottom: 12px;
 }
 
-.job-title {
-    font-size: 1.15rem;
-    font-weight: 700;
+.timeline-header h3 {
+    font-size: 1.05rem;
 }
 
-.company-name {
-    color: var(--accent-cyan);
-    font-weight: 600;
-    font-size: .92rem;
+.company {
+    color: var(--cyan);
+    font-size: .86rem;
 }
 
-.job-date {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .75rem;
-    color: var(--text-muted);
-    background: rgba(255,255,255,.04);
-    padding: 4px 9px;
-    border-radius: 20px;
-    border: 1px solid var(--border-color);
+.date {
+    color: var(--muted);
+    font: .7rem 'JetBrains Mono', monospace;
 }
 
-.timeline-bullets {
-    list-style: none;
-    margin-top: 14px;
+.timeline-card ul {
+    color: var(--muted);
+    font-size: .84rem;
+    padding-left: 19px;
 }
 
-.timeline-bullets li {
-    position: relative;
-    padding-left: 20px;
-    color: var(--text-secondary);
-    font-size: .88rem;
+.timeline-card li {
+    margin-bottom: 7px;
+}
+
+/* Education */
+
+.education-grid {
+    display: grid;
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 24px;
+}
+
+.education-card {
+    padding: 22px;
+    margin-bottom: 12px;
+    border: 1px solid var(--border);
+    border-radius: 13px;
+    background: rgba(19,29,50,.7);
+}
+
+.education-card h3 {
+    font-size: .96rem;
+    margin-bottom: 5px;
+}
+
+.education-card p {
+    color: var(--muted);
+    font-size: .82rem;
+}
+
+.education-card .qualification {
+    color: var(--cyan);
     margin-bottom: 8px;
 }
 
-.timeline-bullets li::before {
-    content: '▹';
-    position: absolute;
-    left: 0;
-    color: var(--accent-cyan);
-}
+/* Contact */
 
-/* Education and certifications */
-.dual-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 30px;
-}
-
-.edu-card,
-.cert-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-md);
-    padding: 18px;
-    margin-bottom: 15px;
-    display: flex;
-    gap: 15px;
-    align-items: flex-start;
-}
-
-.edu-icon {
-    width: 42px;
-    height: 42px;
-    flex-shrink: 0;
-    border-radius: 10px;
-    background: rgba(139,92,246,.15);
-    color: var(--accent-purple);
-    display: grid;
-    place-items: center;
-    font-size: 1.2rem;
-}
-
-.cert-badge-list {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.cert-item {
-    background: rgba(255,255,255,.02);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-sm);
-    padding: 13px 15px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 12px;
-}
-
-.cert-title {
-    font-weight: 600;
-    font-size: .88rem;
-}
-
-.cert-issuer {
-    font-size: .78rem;
-    color: var(--accent-cyan);
-}
-
-/* Contact and footer */
 .contact-box {
-    background: linear-gradient(135deg,rgba(114,241,255,.14),rgba(255,120,209,.14),rgba(108,139,255,.12));
-    border: 1px solid rgba(114,241,255,.3);
-    border-radius: var(--radius-lg);
     padding: 45px 25px;
     text-align: center;
-    margin-bottom: 50px;
+    border: 1px solid rgba(114,241,255,.25);
+    border-radius: 20px;
+    background: linear-gradient(120deg,rgba(114,241,255,.08),rgba(255,120,209,.08));
 }
 
 .contact-box h2 {
-    font-size: clamp(1.6rem,4vw,2rem);
-    font-weight: 800;
+    font-size: clamp(1.7rem,4vw,2.5rem);
     margin-bottom: 12px;
 }
 
 .contact-box p {
-    color: var(--text-secondary);
-    max-width: 550px;
-    margin: 0 auto 25px;
+    max-width: 650px;
+    margin: 0 auto 23px;
+    color: var(--muted);
+}
+
+.contact-box .actions {
+    justify-content: center;
 }
 
 footer {
-    padding: 30px 0;
-    border-top: 1px solid var(--border-color);
+    border-top: 1px solid var(--border);
+    padding: 25px 0;
     text-align: center;
-    color: var(--text-muted);
-    font-size: .82rem;
+    color: var(--muted);
+    font-size: .8rem;
 }
 
-.toast {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
-    background: var(--accent-cyan);
-    color: #000;
-    padding: 12px 18px;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    font-size: .85rem;
-    opacity: 0;
-    transform: translateY(15px);
-    transition: all .3s;
-    pointer-events: none;
-    z-index: 1000;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Responsive layout */
-@media(max-width:900px) {
+@media(max-width: 850px) {
     .nav-inner {
-        padding-top: 12px;
-        padding-bottom: 12px;
-        align-items: flex-start;
+        padding: 14px 0;
         flex-direction: column;
+        align-items: flex-start;
     }
 
-    .nav-links {
-        gap: 14px;
+    nav ul {
+        gap: 10px 16px;
     }
 
-    .hero-section {
+    .hero {
         grid-template-columns: 1fr;
-        padding: 45px 0;
+        padding-top: 55px;
     }
 
     .profile-card {
-        max-width: 400px;
+        max-width: 420px;
         width: 100%;
         margin: auto;
     }
+
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
-@media(max-width:640px) {
+@media(max-width: 600px) {
     .container {
-        padding: 0 16px;
+        width: min(100% - 28px, 1140px);
     }
 
     section {
-        padding: 42px 0;
+        padding: 50px 0;
     }
 
-    .project-card {
+    .skills-grid,
+    .education-grid {
         grid-template-columns: 1fr;
     }
 
-    .project-preview {
-        min-height: 230px;
+    .project-visual {
+        min-height: 245px;
+        padding: 14px;
     }
 
     .project-content {
-        padding: 22px;
+        padding: 20px;
     }
 
-    .dual-grid {
-        grid-template-columns: 1fr;
+    .etl-flow {
+        gap: 5px;
     }
 
-    .nav-links {
-        gap: 10px 15px;
+    .etl-stage {
+        min-height: 95px;
     }
 
-    .nav-links a {
-        font-size: .8rem;
+    .etl-stage strong {
+        font-size: .61rem;
     }
 
-    .brand-logo {
-        font-size: 1rem;
-    }
-
-    .contact-info-pills {
-        gap: 8px;
-    }
-
-    .info-pill {
-        font-size: .75rem;
-    }
-
-    .cert-item {
-        align-items: flex-start;
+    .etl-stage small {
+        font-size: .52rem;
     }
 }
 
-@media(prefers-reduced-motion:reduce) {
+@media(prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
     }
@@ -1044,8 +1115,8 @@ footer {
     *,
     *::before,
     *::after {
-        animation-duration: .01ms !important;
         transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
     }
 }
 </style>
@@ -1053,20 +1124,12 @@ footer {
 
 <body>
 
-<div id="fixed-bg" aria-hidden="true"><canvas id="c"></canvas></div>
-<div class="glow-bg-1" aria-hidden="true"></div>
-<div class="glow-bg-2" aria-hidden="true"></div>
-<div id="toast-msg" class="toast" role="status">Copied to clipboard!</div>
-
 <header>
     <div class="container nav-inner">
-        <a href="#about" class="brand-logo">
-            YASEERAH KADER
-            <span class="brand-badge">DATA & SOFTWARE</span>
-        </a>
+        <a class="brand" href="#about">YASEERAH<span>.</span> KADER</a>
 
         <nav aria-label="Main navigation">
-            <ul class="nav-links">
+            <ul>
                 <li><a href="#about">About</a></li>
                 <li><a href="#skills">Skills</a></li>
                 <li><a href="#projects">Projects</a></li>
@@ -1081,314 +1144,352 @@ footer {
 <main class="container">
 
 <!-- ABOUT -->
-<section id="about" class="hero-section reveal">
+<section id="about" class="hero">
     <div>
-        <div class="hero-badge-available">
-            <span class="pulse-dot"></span>
-            Available for Software & Data Engineering Roles
-        </div>
+        <div class="availability">Open to Software & Data Opportunities</div>
 
-        <h1 class="hero-title">Yaseerah Kader</h1>
-        <p class="hero-subtitle">Software & Data Engineer | Data Analyst | BI & AI Enthusiast</p>
+        <h1>Yaseerah Kader</h1>
 
-        <p class="hero-summary">
-            Graduate with a strong foundation in software engineering, data pipelines,
-            analytics, and business intelligence. Currently analysing digital campaign
-            performance, tracking frameworks (GA4/GTM), and data validation at
-            <strong>Ogilvy</strong>. Passionate about building reliable data solutions
-            and leveraging AI to solve business challenges.
+        <p class="hero-subtitle">
+            SOFTWARE ENGINEERING · DATA ENGINEERING · ANALYTICS
         </p>
 
-        <div class="hero-cta-group">
-            <a href="mailto:yaseerahkader2309@gmail.com" class="btn btn-primary">✉ Get in Touch</a>
-            <a href="https://linkedin.com/in/yaseerah-kader-ab509528a" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn ↗</a>
-            <a href="https://github.com/Yaseerahk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub ↗</a>
-        </div>
+        <p class="hero-description">
+            Software and Data Engineering graduate with an interest in data pipelines,
+            analytics, business intelligence, and AI. I enjoy using technology to solve
+            practical problems, improve data quality, and turn raw data into useful insights.
+            I am building hands-on projects to strengthen my technical skills and create
+            reliable, data-driven solutions.
+        </p>
 
-        <div class="contact-info-pills">
-            <span class="info-pill">📍 Johannesburg, South Africa</span>
-            <span class="info-pill">📞 066 477 6859</span>
-            <span class="info-pill" id="copy-email-btn" role="button" tabindex="0" style="cursor:pointer" title="Click to copy email">📧 yaseerahkader2309@gmail.com (Click to Copy)</span>
+        <div class="actions">
+            <a class="button primary" href="mailto:yaseerahkader2309@gmail.com">Contact Me ↗</a>
+            <a class="button" href="https://github.com/Yaseerahk" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="button" href="https://linkedin.com/in/yaseerah-kader-ab509528a" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
     </div>
 
-    <aside class="profile-card card-lift">
-        <div class="profile-avatar-wrapper">
-            <!-- Replace with your own profile photo when ready -->
-            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=500&q=80" alt="Profile image">
-        </div>
-        <h3 style="font-size:1.2rem;font-weight:700">Yaseerah Kader</h3>
-        <p style="color:var(--text-muted);font-size:.85rem;margin-top:4px">Data Analytics Intern @ Ogilvy</p>
+    <aside class="profile-card">
+        <div class="profile-monogram" aria-label="Y K initials">Y_K</div>
+        <h2>Yaseerah Kader</h2>
+        <p>Software & Data Engineering</p>
 
-        <div class="stat-grid">
-            <div class="stat-box">
-                <div class="stat-value">3+</div>
-                <div class="stat-label">Diplomas</div>
+        <div class="stats">
+            <div class="stat">
+                <strong>4</strong>
+                <span>Portfolio Projects</span>
             </div>
-            <div class="stat-box">
-                <div class="stat-value">10+</div>
-                <div class="stat-label">Tech Stack</div>
+            <div class="stat">
+                <strong>3</strong>
+                <span>Core Focus Areas</span>
             </div>
         </div>
     </aside>
 </section>
 
 <!-- SKILLS -->
-<section id="skills" class="reveal">
-    <div class="section-header">
-        <span class="section-tag">// Competencies & Stack</span>
-        <h2 class="section-title">Technical Expertise</h2>
-    </div>
-
-    <div class="skills-tabs">
-        <button class="tab-btn active" data-filter="all">All Skills</button>
-        <button class="tab-btn" data-filter="engineering">Data Engineering</button>
-        <button class="tab-btn" data-filter="analytics">Analytics & BI</button>
-        <button class="tab-btn" data-filter="programming">Programming</button>
-        <button class="tab-btn" data-filter="tools">Tools & Methods</button>
-    </div>
+<section id="skills">
+    <span class="section-label">// Technical toolkit</span>
+    <h2 class="section-title">Skills & Expertise</h2>
 
     <div class="skills-grid">
-        <div class="skill-category-card reveal card-lift" data-category="engineering">
-            <div class="skill-card-title"><span class="skill-icon">⚡</span>Data Engineering</div>
-            <div class="skill-tags">
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">ETL Pipelines</span>
-                <span class="skill-tag">Data Modeling</span>
-                <span class="skill-tag">Data Warehousing</span>
-                <span class="skill-tag">Data QA & Validation</span>
-                <span class="skill-tag">Microsoft Fabric</span>
-                <span class="skill-tag">Cloud Concepts</span>
-                <span class="skill-tag">Batch Processing</span>
+        <article class="skill-card">
+            <h3>⚡ Data Engineering</h3>
+            <div class="tags">
+                <span class="tag">SQL</span>
+                <span class="tag">ETL Pipelines</span>
+                <span class="tag">Data Validation</span>
+                <span class="tag">Batch Processing</span>
+                <span class="tag">Data Modelling</span>
+                <span class="tag">Data Warehousing</span>
             </div>
-        </div>
+        </article>
 
-        <div class="skill-category-card reveal card-lift" data-category="analytics">
-            <div class="skill-card-title"><span class="skill-icon">📊</span>Analytics & BI</div>
-            <div class="skill-tags">
-                <span class="skill-tag">Power BI</span>
-                <span class="skill-tag">Google Analytics (GA4)</span>
-                <span class="skill-tag">Looker Studio</span>
-                <span class="skill-tag">Amazon QuickSight</span>
-                <span class="skill-tag">Adobe Analytics</span>
-                <span class="skill-tag">Advanced Excel</span>
-                <span class="skill-tag">KPI Analysis</span>
-                <span class="skill-tag">Dashboard Dev</span>
+        <article class="skill-card">
+            <h3>📊 Analytics & BI</h3>
+            <div class="tags">
+                <span class="tag">Excel</span>
+                <span class="tag">Power BI</span>
+                <span class="tag">Data Visualisation</span>
+                <span class="tag">KPI Analysis</span>
+                <span class="tag">Dashboard Design</span>
+                <span class="tag">Reporting</span>
             </div>
-        </div>
+        </article>
 
-        <div class="skill-category-card reveal card-lift" data-category="programming">
-            <div class="skill-card-title"><span class="skill-icon">💻</span>Programming</div>
-            <div class="skill-tags">
-                <span class="skill-tag">Python</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">R</span>
-                <span class="skill-tag">HTML5 / CSS3</span>
-                <span class="skill-tag">Git & GitHub</span>
-                <span class="skill-tag">OOP Principles</span>
-                <span class="skill-tag">Pandas</span>
+        <article class="skill-card">
+            <h3>💻 Programming</h3>
+            <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">Java</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
             </div>
-        </div>
+        </article>
 
-        <div class="skill-category-card reveal card-lift" data-category="tools">
-            <div class="skill-card-title"><span class="skill-icon">🛠️</span>Tools & Platforms</div>
-            <div class="skill-tags">
-                <span class="skill-tag">Google Tag Manager</span>
-                <span class="skill-tag">MS Office Suite</span>
-                <span class="skill-tag">Figma</span>
-                <span class="skill-tag">Canva</span>
-                <span class="skill-tag">Stakeholder Reporting</span>
-                <span class="skill-tag">Data Storytelling</span>
-                <span class="skill-tag">VS Code</span>
+        <article class="skill-card">
+            <h3>🛠️ Tools & Methods</h3>
+            <div class="tags">
+                <span class="tag">Git</span>
+                <span class="tag">GitHub</span>
+                <span class="tag">VS Code</span>
+                <span class="tag">SQLite</span>
+                <span class="tag">CSV Processing</span>
+                <span class="tag">Problem Solving</span>
             </div>
-        </div>
+        </article>
     </div>
 </section>
 
 <!-- PROJECTS -->
-<section id="projects" class="reveal">
-    <div class="section-header">
-        <span class="section-tag">// Things I Built</span>
-        <h2 class="section-title">Featured Projects</h2>
-    </div>
+<section id="projects">
+    <span class="section-label">// Selected work</span>
+    <h2 class="section-title">Featured Projects</h2>
 
     <div class="project-grid">
 
         <!-- PROJECT 1: RETRO PHOTOBOOTH -->
-        <article class="project-card card-lift">
-            <div class="project-preview" role="img" aria-label="Retro photobooth interface preview">
-                <div class="booth-preview">
-                    <div class="booth-preview-header">
-                        <span>RETRO BOOTH</span>
-                        <span class="booth-preview-status">READY</span>
+        <article class="project-card">
+            <div class="project-visual booth-visual">
+                <div class="booth-window">
+                    <div class="booth-title">RETRO PHOTOBOOTH</div>
+
+                    <div class="booth-screen"></div>
+
+                    <div class="booth-strip">
+                        <div class="booth-frame"></div>
+                        <div class="booth-frame"></div>
+                        <div class="booth-frame"></div>
                     </div>
-                    <div class="booth-preview-screen">📷 ✧˖°</div>
-                    <div class="booth-preview-controls">
-                        <span>FILTER: RETRO</span>
-                        <span class="booth-preview-button">TAKE PHOTO</span>
+
+                    <div class="booth-controls">
+                        <span>FILTER: VINTAGE</span>
+                        <span class="booth-button">CAPTURE</span>
                     </div>
                 </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Completed</span>
+                <span class="project-status">Interactive Web Project</span>
                 <h3 class="project-title">Retro Photobooth</h3>
+
                 <ul class="project-description-list">
-                    <li>Captures photos with a live camera preview.</li>
-                    <li>Creates classic photo strips with vintage filters and adjustable effects.</li>
+                    <li>Designed a retro-inspired photobooth interface.</li>
+                    <li>Explores browser camera functionality and photo capture.</li>
+                    <li>Uses a responsive layout and vintage-inspired visual styling.</li>
                 </ul>
+
                 <div class="project-tags">
-                    <span class="skill-tag">JavaScript</span>
-                    <span class="skill-tag">Camera API</span>
-                    <span class="skill-tag">Photo Filters</span>
-                    <span class="skill-tag">Responsive UI</span>
+                    <span class="tag">HTML</span>
+                    <span class="tag">CSS</span>
+                    <span class="tag">JavaScript</span>
+                    <span class="tag">Camera API</span>
                 </div>
             </div>
         </article>
 
         <!-- PROJECT 2: MINI ETL PIPELINE -->
-        <article class="project-card card-lift">
-            <div class="project-preview project-preview-etl">
-                <img
-                    class="project-preview-image"
-                    src="./images/mini-etl-pipeline.png"
-                    alt="Mini ETL pipeline diagram"
-                    loading="lazy"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
-                >
-                <div class="image-fallback">
-                    <span>📥</span>
-                    <strong>Mini ETL Pipeline</strong>
-                    <small>Extract → Transform → Load</small>
+        <article class="project-card">
+            <div class="project-visual etl-visual">
+                <div class="etl-window">
+                    <div class="etl-heading">MINI ETL PIPELINE / WORKFLOW</div>
+
+                    <div class="etl-flow">
+                        <div class="etl-stage">
+                            <span class="etl-stage-icon">⇩</span>
+                            <strong>EXTRACT</strong>
+                            <small>API / CSV</small>
+                        </div>
+
+                        <div class="etl-connector"></div>
+
+                        <div class="etl-stage">
+                            <span class="etl-stage-icon">⚙</span>
+                            <strong>TRANSFORM</strong>
+                            <small>Clean data</small>
+                        </div>
+
+                        <div class="etl-connector"></div>
+
+                        <div class="etl-stage">
+                            <span class="etl-stage-icon">▤</span>
+                            <strong>LOAD</strong>
+                            <small>SQLite</small>
+                        </div>
+                    </div>
+
+                    <div class="etl-footer">
+                        <span>Pipeline workflow</span>
+                        <strong>→ COMPLETE FLOW</strong>
+                    </div>
                 </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Completed</span>
+                <span class="project-status">Data Engineering</span>
                 <h3 class="project-title">Mini ETL Pipeline</h3>
+
                 <ul class="project-description-list">
-                    <li>Extracts data from a REST API and transforms records before loading them into SQLite.</li>
-                    <li>Handles duplicates, invalid records, and data quality checks.</li>
-                    <li>Logs processing results and errors to support troubleshooting.</li>
-                    <li>Uses SQL verification and conflict handling for repeatable runs.</li>
+                    <li>Extracts data from a source such as an API or CSV file.</li>
+                    <li>Cleans and transforms records before loading them into a SQLite database.</li>
+                    <li>Supports duplicate handling, validation, and processing logs.</li>
+                    <li>Demonstrates the core stages of an extract, transform, and load workflow.</li>
                 </ul>
+
                 <div class="project-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">SQLite</span>
-                    <span class="skill-tag">ETL</span>
-                    <span class="skill-tag">REST API</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">SQLite</span>
+                    <span class="tag">ETL</span>
                 </div>
             </div>
         </article>
 
         <!-- PROJECT 3: DATA QUALITY MONITORING TOOL -->
-        <article class="project-card card-lift">
-            <div class="project-preview project-preview-quality">
-                <img
-                    class="project-preview-image"
-                    src="./images/data-quality-monitor.png"
-                    alt="Data quality monitoring dashboard"
-                    loading="lazy"
-                    onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';"
-                >
-                <div class="image-fallback">
-                    <span>🔍</span>
-                    <strong>Data Quality Monitoring</strong>
-                    <small>Validate → Detect → Report</small>
+        <article class="project-card">
+            <div class="project-visual monitor-visual">
+                <div class="monitor-window">
+                    <div class="monitor-heading">
+                        <span>DATA QUALITY MONITOR</span>
+                        <span>● CHECKS</span>
+                    </div>
+
+                    <div class="monitor-metrics">
+                        <div class="metric">
+                            <strong>01</strong>
+                            <small>Null checks</small>
+                        </div>
+                        <div class="metric">
+                            <strong>02</strong>
+                            <small>Duplicates</small>
+                        </div>
+                        <div class="metric">
+                            <strong>03</strong>
+                            <small>Validations</small>
+                        </div>
+                    </div>
+
+                    <p class="monitor-chart-title">DATA QUALITY OVERVIEW</p>
+
+                    <div class="chart-bars" aria-label="Decorative data quality bar chart">
+                        <div class="chart-bar" style="height:48%"></div>
+                        <div class="chart-bar" style="height:73%"></div>
+                        <div class="chart-bar" style="height:59%"></div>
+                        <div class="chart-bar" style="height:90%"></div>
+                        <div class="chart-bar" style="height:76%"></div>
+                        <div class="chart-bar" style="height:98%"></div>
+                        <div class="chart-bar" style="height:83%"></div>
+                    </div>
+
+                    <div class="check-row">
+                        <span class="check-dot"></span>
+                        Required column checks
+                    </div>
+                    <div class="check-row">
+                        <span class="check-dot"></span>
+                        Duplicate record checks
+                    </div>
+                    <div class="check-row">
+                        <span class="check-dot warning"></span>
+                        Invalid value checks
+                    </div>
                 </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Completed</span>
+                <span class="project-status">Data Quality</span>
                 <h3 class="project-title">Data Quality Monitoring Tool</h3>
+
                 <ul class="project-description-list">
-                    <li>Validates datasets before they enter reporting systems.</li>
-                    <li>Detects missing values, duplicate records, invalid data, and missing or non-unique IDs.</li>
-                    <li>Generates a PASS/FAIL report and saves validation results in CSV format.</li>
-                    <li>Demonstrates data quality checks for more reliable reporting.</li>
+                    <li>Checks datasets for missing values, duplicate records, and invalid values.</li>
+                    <li>Validates required columns and unique identifiers.</li>
+                    <li>Produces a pass/fail quality report for review.</li>
+                    <li>Helps identify data issues before downstream analysis and reporting.</li>
                 </ul>
+
                 <div class="project-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">SQL</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">CSV</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">SQL</span>
+                    <span class="tag">Data Validation</span>
                 </div>
             </div>
         </article>
 
         <!-- PROJECT 4: BATCH DATA QUALITY PIPELINE -->
-        <article class="project-card card-lift">
-            <div class="project-preview project-preview-batch" role="img" aria-label="Batch data quality pipeline visual">
-                <div class="batch-pipeline-visual">
-                    <div class="batch-visual-heading">
-                        <span>BATCH PIPELINE</span>
-                        <span class="batch-live-status">● DATA QA</span>
+        <article class="project-card">
+            <div class="project-visual batch-visual">
+                <div class="batch-window">
+                    <div class="batch-heading">
+                        <span>BATCH DATA PIPELINE</span>
+                        <span>● DATA QA</span>
                     </div>
 
                     <div class="batch-step">
-                        <div class="batch-step-icon">📄</div>
+                        <div class="batch-step-icon">▤</div>
                         <div>
                             <strong>CSV Batch Input</strong>
                             <small>Load transaction records</small>
                         </div>
                     </div>
 
-                    <div class="batch-flow-arrow">↓</div>
+                    <div class="batch-arrow">↓</div>
 
                     <div class="batch-step">
-                        <div class="batch-step-icon">🐍</div>
+                        <div class="batch-step-icon">Py</div>
                         <div>
                             <strong>Python + Pandas</strong>
-                            <small>Inspect and validate data</small>
+                            <small>Read and inspect records</small>
                         </div>
                     </div>
 
-                    <div class="batch-flow-arrow">↓</div>
+                    <div class="batch-arrow">↓</div>
 
                     <div class="batch-step">
-                        <div class="batch-step-icon">🔎</div>
+                        <div class="batch-step-icon">⌕</div>
                         <div>
-                            <strong>Quality Checks</strong>
-                            <small>Required columns and records</small>
+                            <strong>Quality Validation</strong>
+                            <small>Required fields and values</small>
                         </div>
                     </div>
 
-                    <div class="batch-flow-arrow">↓</div>
+                    <div class="batch-arrow">↓</div>
 
-                    <div class="batch-validation-result">
+                    <div class="batch-summary">
                         <strong>✓ VALIDATION SUMMARY</strong>
-                        <p>Review batch quality before downstream use.</p>
+                        <p>Review data quality before downstream use.</p>
                     </div>
                 </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Data Engineering Project</span>
+                <span class="project-status">Data Engineering</span>
                 <h3 class="project-title">Batch Data Quality Pipeline</h3>
+
                 <ul class="project-description-list">
-                    <li>Processes batches of CSV transaction data using Python and Pandas.</li>
-                    <li>Checks required fields, including transaction ID, customer ID, amount, and transaction date.</li>
-                    <li>Helps identify data quality issues before downstream analysis and reporting.</li>
-                    <li>Demonstrates structured batch validation and repeatable data processing practices.</li>
+                    <li>Processes batches of CSV transaction data with Python and Pandas.</li>
+                    <li>Checks for required fields: transaction ID, customer ID, amount, and transaction date.</li>
+                    <li>Helps detect data quality issues before analysis and reporting.</li>
+                    <li>Demonstrates structured batch validation and repeatable data processing.</li>
                 </ul>
 
                 <div class="project-tags">
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">CSV Processing</span>
-                    <span class="skill-tag">Data Validation</span>
-                    <span class="skill-tag">Batch Processing</span>
-                    <span class="skill-tag">GitHub</span>
+                    <span class="tag">Python</span>
+                    <span class="tag">Pandas</span>
+                    <span class="tag">CSV</span>
+                    <span class="tag">Batch Processing</span>
+                    <span class="tag">Data Validation</span>
                 </div>
 
                 <div class="project-links">
                     <a
+                        class="button"
                         href="https://github.com/Yaseerahk/batch-data-quality-pipeline"
-                        class="project-link"
                         target="_blank"
                         rel="noopener noreferrer"
-                    >View on GitHub ↗</a>
+                    >View GitHub Repository ↗</a>
                 </div>
             </div>
         </article>
@@ -1397,171 +1498,126 @@ footer {
 </section>
 
 <!-- EXPERIENCE -->
-<section id="experience" class="reveal">
-    <div class="section-header">
-        <span class="section-tag">// Professional Track Record</span>
-        <h2 class="section-title">Work Experience</h2>
-    </div>
+<section id="experience">
+    <span class="section-label">// Professional journey</span>
+    <h2 class="section-title">Experience</h2>
 
     <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
+        <article class="timeline-item">
+            <span class="timeline-dot"></span>
             <div class="timeline-card">
                 <div class="timeline-header">
                     <div>
-                        <h3 class="job-title">Data Analytics Intern</h3>
-                        <div class="company-name">Ogilvy</div>
+                        <h3>Data Analytics Intern</h3>
+                        <p class="company">Ogilvy</p>
                     </div>
-                    <span class="job-date">Feb 2026 – Present</span>
+                    <span class="date">2026 – Present</span>
                 </div>
-                <ul class="timeline-bullets">
-                    <li>Analyse campaign performance metrics, KPIs, Cost per Result, engagement rates, and conversion trends.</li>
-                    <li>Perform data extraction, cleaning, validation, and transformation using SQL and Excel.</li>
-                    <li>Develop monthly and quarterly reporting solutions and business dashboards.</li>
-                    <li>Work with Google Tag Manager and Google Analytics 4 tracking solutions.</li>
-                    <li>Conduct data quality assurance and integrity checks for accurate reporting.</li>
-                    <li>Translate raw datasets into actionable business recommendations.</li>
-                </ul>
-            </div>
-        </div>
 
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-card">
-                <div class="timeline-header">
-                    <div>
-                        <h3 class="job-title">Administration & Data Capturing</h3>
-                        <div class="company-name">Medicoll Claims Bureau</div>
-                    </div>
-                    <span class="job-date">May 2024 – Sep 2024</span>
-                </div>
-                <ul class="timeline-bullets">
-                    <li>Managed high-volume datasets while maintaining data integrity and accuracy.</li>
-                    <li>Supported administrative workflows and recurring reporting procedures.</li>
-                    <li>Validated records and supported efficient information management.</li>
+                <ul>
+                    <li>Analyse campaign performance, engagement, and KPI trends.</li>
+                    <li>Support data validation, reporting, and dashboard-related work.</li>
+                    <li>Work with digital analytics and tracking concepts, including GA4 and Google Tag Manager.</li>
+                    <li>Explore opportunities to apply data engineering and analytics skills to business problems.</li>
                 </ul>
             </div>
-        </div>
+        </article>
 
-        <div class="timeline-item">
-            <div class="timeline-dot"></div>
+        <article class="timeline-item">
+            <span class="timeline-dot"></span>
             <div class="timeline-card">
                 <div class="timeline-header">
                     <div>
-                        <h3 class="job-title">Administration & Documentation</h3>
-                        <div class="company-name">Bliss Sanctuary Africa</div>
+                        <h3>Administration & Data Capturing</h3>
+                        <p class="company">Medicoll Claims Bureau</p>
                     </div>
-                    <span class="job-date">Jul 2024 – Sep 2024</span>
+                    <span class="date">2024</span>
                 </div>
-                <ul class="timeline-bullets">
-                    <li>Handled documentation and structured operational records.</li>
-                    <li>Maintained organised information systems and supported administrative continuity.</li>
+
+                <ul>
+                    <li>Supported data capturing, record maintenance, and administrative workflows.</li>
+                    <li>Handled information carefully, with attention to accuracy and organisation.</li>
                 </ul>
             </div>
-        </div>
+        </article>
+
+        <article class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+                <div class="timeline-header">
+                    <div>
+                        <h3>Administration & Documentation</h3>
+                        <p class="company">Bliss Sanctuary Africa</p>
+                    </div>
+                    <span class="date">2024</span>
+                </div>
+
+                <ul>
+                    <li>Supported documentation, record organisation, and administrative tasks.</li>
+                </ul>
+            </div>
+        </article>
     </div>
 </section>
 
-<!-- EDUCATION AND CERTIFICATIONS -->
-<section id="education" class="reveal">
-    <div class="section-header">
-        <span class="section-tag">// Background & Qualifications</span>
-        <h2 class="section-title">Education & Certifications</h2>
-    </div>
+<!-- EDUCATION -->
+<section id="education">
+    <span class="section-label">// Learning & development</span>
+    <h2 class="section-title">Education & Certifications</h2>
 
-    <div class="dual-grid">
+    <div class="education-grid">
         <div>
-            <h3 style="font-size:1.15rem;margin-bottom:20px;color:var(--accent-cyan)">🎓 Formal Education</h3>
+            <article class="education-card">
+                <h3>WeThinkCode_</h3>
+                <p class="qualification">Software Engineering Diploma</p>
+                <p>Software development, programming, technical problem-solving, and software engineering fundamentals.</p>
+            </article>
 
-            <div class="edu-card">
-                <div class="edu-icon">💻</div>
-                <div>
-                    <h4 style="font-weight:700">WeThinkCode_</h4>
-                    <p style="color:var(--accent-cyan);font-size:.85rem">Diploma in Software Engineering</p>
-                    <p style="color:var(--text-secondary);font-size:.84rem;margin-top:6px">Software engineering with exposure to data engineering, algorithms, databases, and problem-solving.</p>
-                </div>
-            </div>
+            <article class="education-card">
+                <h3>Alison</h3>
+                <p class="qualification">Diploma in Data Analytics</p>
+                <p>Data analysis concepts and techniques for interpreting information and supporting decisions.</p>
+            </article>
 
-            <div class="edu-card">
-                <div class="edu-icon">📜</div>
-                <div>
-                    <h4 style="font-weight:700">Alison Diplomas</h4>
-                    <p style="color:var(--accent-cyan);font-size:.85rem">Data Analytics & Cyber Security</p>
-                    <p style="color:var(--text-secondary);font-size:.84rem;margin-top:6px">Qualifications covering data analysis methods and cybersecurity fundamentals.</p>
-                </div>
-            </div>
-
-            <div class="edu-card">
-                <div class="edu-icon">🏫</div>
-                <div>
-                    <h4 style="font-weight:700">Hoërskool President High School</h4>
-                    <p style="color:var(--text-muted);font-size:.85rem">National Senior Certificate (Matric)</p>
-                </div>
-            </div>
+            <article class="education-card">
+                <h3>Alison</h3>
+                <p class="qualification">Diploma in Cyber Security</p>
+                <p>Cybersecurity fundamentals and digital security concepts.</p>
+            </article>
         </div>
 
         <div>
-            <h3 style="font-size:1.15rem;margin-bottom:20px;color:var(--accent-purple)">🏆 Certifications</h3>
+            <article class="education-card">
+                <h3>Technical Development</h3>
+                <p class="qualification">Data Engineering Portfolio</p>
+                <p>Hands-on practice with Python, Pandas, SQL, ETL workflows, CSV processing, and data quality checks.</p>
+            </article>
 
-            <div class="cert-badge-list">
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-title">Alison Diploma in Data Analytics</div>
-                        <div class="cert-issuer">Data Analytics</div>
-                    </div>
-                    <span class="skill-tag">Diploma</span>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-title">GenAI for Software Engineers</div>
-                        <div class="cert-issuer">AI Fundamentals</div>
-                    </div>
-                    <span class="skill-tag">Certified</span>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-title">FNB App Academy – Full Stack Dev</div>
-                        <div class="cert-issuer">Software Engineering</div>
-                    </div>
-                    <span class="skill-tag">Bootcamp</span>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-title">Alison Diploma in Cyber Security</div>
-                        <div class="cert-issuer">Cybersecurity</div>
-                    </div>
-                    <span class="skill-tag">Diploma</span>
-                </div>
-
-                <div class="cert-item">
-                    <div>
-                        <div class="cert-title">Java Programming & Core Development</div>
-                        <div class="cert-issuer">Sololearn & Udemy</div>
-                    </div>
-                    <span class="skill-tag">Verified</span>
-                </div>
-            </div>
+            <article class="education-card">
+                <h3>Data Analytics & Business Intelligence</h3>
+                <p class="qualification">Ongoing Skills Development</p>
+                <p>Building practical knowledge in data visualisation, dashboards, reporting, and analytics workflows.</p>
+            </article>
         </div>
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="reveal" style="border-top:none">
-    <div class="contact-box card-lift">
-        <h2>Let's Connect & Build Together</h2>
+<section id="contact">
+    <div class="contact-box">
+        <span class="section-label">// Get in touch</span>
+        <h2>Let's Build Something Meaningful</h2>
+
         <p>
-            I am actively seeking software engineering, data engineering, and data analytics
-            opportunities where I can apply my technical skills, build reliable data solutions,
-            and deliver useful insights.
+            I am interested in opportunities in software engineering, data engineering,
+            data analytics, and AI where I can keep learning, contribute to real projects,
+            and build solutions that make a difference.
         </p>
 
-        <div class="hero-cta-group" style="justify-content:center">
-            <a href="mailto:yaseerahkader2309@gmail.com" class="btn btn-primary">📧 Email Yaseerah</a>
-            <a href="https://linkedin.com/in/yaseerah-kader-ab509528a" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">LinkedIn Profile ↗</a>
-            <a href="https://github.com/Yaseerahk" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">GitHub Projects ↗</a>
+        <div class="actions">
+            <a class="button primary" href="mailto:yaseerahkader2309@gmail.com">Email Me ↗</a>
+            <a class="button" href="https://github.com/Yaseerahk" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+            <a class="button" href="https://linkedin.com/in/yaseerah-kader-ab509528a" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
         </div>
     </div>
 </section>
@@ -1570,188 +1626,9 @@ footer {
 
 <footer>
     <div class="container">
-        <p>© 2026 Yaseerah Kader. Built with HTML, CSS & JavaScript.</p>
+        <p>© 2026 Yaseerah Kader · Built with HTML and CSS</p>
     </div>
 </footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-    /* Interactive background */
-    const canvas = document.querySelector('#c');
-
-    if (canvas) {
-        const ctx = canvas.getContext('2d');
-        let width = 0;
-        let height = 0;
-        let boxes = [];
-        const boxSize = 65;
-        const circle = Math.PI * 2;
-        const mouse = { x: -1000, y: -1000 };
-
-        function initGrid() {
-            width = window.innerWidth;
-            height = window.innerHeight;
-
-            const dpr = Math.min(window.devicePixelRatio || 1, 2);
-
-            canvas.width = width * dpr;
-            canvas.height = height * dpr;
-            canvas.style.width = width + 'px';
-            canvas.style.height = height + 'px';
-
-            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-
-            boxes = [];
-
-            for (let x = 0; x <= width + boxSize; x += boxSize) {
-                for (let y = 0; y <= height + boxSize; y += boxSize) {
-                    boxes.push({ x, y });
-                }
-            }
-        }
-
-        function drawGrid() {
-            ctx.clearRect(0, 0, width, height);
-            ctx.lineWidth = 1;
-            ctx.strokeStyle = 'rgba(114,241,255,0.035)';
-            ctx.beginPath();
-
-            for (let x = 0; x <= width; x += boxSize) {
-                ctx.moveTo(x, 0);
-                ctx.lineTo(x, height);
-            }
-
-            for (let y = 0; y <= height; y += boxSize) {
-                ctx.moveTo(0, y);
-                ctx.lineTo(width, y);
-            }
-
-            ctx.stroke();
-
-            boxes.forEach(box => {
-                const distance = Math.hypot(box.x - mouse.x, box.y - mouse.y);
-                const strength = Math.max(0, 1 - distance / 230);
-
-                if (strength > 0.01) {
-                    ctx.strokeStyle = `rgba(114,241,255,${strength * .4})`;
-                    ctx.strokeRect(box.x - 22, box.y - 22, 44, 44);
-
-                    ctx.fillStyle = strength > .5 ? '#72f1ff' : '#ff78d1';
-                    ctx.beginPath();
-                    ctx.arc(box.x, box.y, Math.max(1, 4 * strength), 0, circle);
-                    ctx.fill();
-                } else {
-                    ctx.fillStyle = 'rgba(255,255,255,.08)';
-                    ctx.beginPath();
-                    ctx.arc(box.x, box.y, 1.2, 0, circle);
-                    ctx.fill();
-                }
-            });
-        }
-
-        initGrid();
-        window.addEventListener('resize', initGrid);
-
-        window.addEventListener('pointermove', event => {
-            mouse.x = event.clientX;
-            mouse.y = event.clientY;
-        });
-
-        if (typeof gsap !== 'undefined') {
-            gsap.ticker.add(drawGrid);
-        } else {
-            let animationFrame;
-
-            function animate() {
-                drawGrid();
-                animationFrame = requestAnimationFrame(animate);
-            }
-
-            animate();
-        }
-    }
-
-    /* Reveal elements as they enter the viewport */
-    const revealItems = document.querySelectorAll('.reveal');
-
-    if ('IntersectionObserver' in window) {
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            threshold: 0.08,
-            rootMargin: '0px 0px -20px 0px'
-        });
-
-        revealItems.forEach((item, index) => {
-            item.style.transitionDelay = `${Math.min(index * 50, 250)}ms`;
-            observer.observe(item);
-        });
-    } else {
-        revealItems.forEach(item => item.classList.add('is-visible'));
-    }
-
-    /* Skills filter */
-    const tabButtons = document.querySelectorAll('.tab-btn');
-    const skillCards = document.querySelectorAll('.skill-category-card');
-
-    tabButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            tabButtons.forEach(item => item.classList.remove('active'));
-            button.classList.add('active');
-
-            const filter = button.getAttribute('data-filter');
-
-            skillCards.forEach(card => {
-                const matches =
-                    filter === 'all' ||
-                    card.getAttribute('data-category') === filter;
-
-                card.style.display = matches ? 'block' : 'none';
-            });
-        });
-    });
-
-    /* Copy email */
-    const copyButton = document.getElementById('copy-email-btn');
-    const toast = document.getElementById('toast-msg');
-    let toastTimer;
-
-    async function copyEmail() {
-        const email = 'yaseerahkader2309@gmail.com';
-
-        try {
-            await navigator.clipboard.writeText(email);
-            toast.textContent = 'Email copied to clipboard!';
-        } catch (error) {
-            toast.textContent = email;
-        }
-
-        toast.classList.add('show');
-        clearTimeout(toastTimer);
-
-        toastTimer = setTimeout(() => {
-            toast.classList.remove('show');
-        }, 2500);
-    }
-
-    if (copyButton) {
-        copyButton.addEventListener('click', copyEmail);
-
-        copyButton.addEventListener('keydown', event => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                copyEmail();
-            }
-        });
-    }
-});
-</script>
 
 </body>
 </html>
