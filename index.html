@@ -2,1633 +2,1023 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b1020">
-<meta name="description" content="Yaseerah Kader's software engineering, data engineering and analytics portfolio.">
-<title>Yaseerah Kader | Software & Data Engineer</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-    --bg: #0b1020;
-    --panel: #131d32;
-    --cyan: #72f1ff;
-    --purple: #ff78d1;
-    --blue: #6c8bff;
-    --green: #8af7b6;
-    --yellow: #ffd166;
-    --text: #edf8ff;
-    --muted: #a2b7d4;
-    --border: rgba(255,255,255,.12);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 85px;
-}
-
-body {
-    background:
-        radial-gradient(ellipse at 5% 0%, rgba(114,241,255,.12), transparent 35%),
-        radial-gradient(ellipse at 100% 40%, rgba(255,120,209,.08), transparent 30%),
-        var(--bg);
-    color: var(--text);
-    font-family: 'Plus Jakarta Sans', sans-serif;
-    line-height: 1.7;
-    overflow-x: hidden;
-}
-
-a {
-    color: inherit;
-}
-
-.container {
-    width: min(1140px, calc(100% - 40px));
-    margin: auto;
-}
-
-header {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: rgba(11,16,32,.94);
-    backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
-}
-
-.nav-inner {
-    min-height: 76px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-.brand {
-    color: var(--text);
-    text-decoration: none;
-    font-weight: 800;
-    font-size: 1.05rem;
-}
-
-.brand span {
-    color: var(--cyan);
-}
-
-nav ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 18px;
-    list-style: none;
-}
-
-nav a {
-    text-decoration: none;
-    color: var(--muted);
-    font-size: .82rem;
-}
-
-nav a:hover {
-    color: var(--cyan);
-}
-
-section {
-    padding: 76px 0;
-    border-top: 1px solid var(--border);
-}
-
-.hero {
-    border-top: 0;
-    min-height: 550px;
-    display: grid;
-    grid-template-columns: 1.5fr .8fr;
-    align-items: center;
-    gap: 45px;
-}
-
-.availability {
-    display: inline-flex;
-    gap: 9px;
-    align-items: center;
-    border: 1px solid rgba(138,247,182,.3);
-    background: rgba(138,247,182,.06);
-    color: var(--green);
-    border-radius: 30px;
-    padding: 7px 13px;
-    font-size: .75rem;
-    margin-bottom: 22px;
-}
-
-.availability::before {
-    content: "";
-    width: 8px;
-    height: 8px;
-    background: var(--green);
-    border-radius: 50%;
-    box-shadow: 0 0 10px var(--green);
-}
-
-h1 {
-    font-size: clamp(2.5rem, 6vw, 4.4rem);
-    line-height: 1.1;
-    letter-spacing: -.05em;
-    background: linear-gradient(120deg, white, var(--cyan), var(--purple));
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-    margin-bottom: 18px;
-}
-
-.hero-subtitle {
-    color: var(--yellow);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .9rem;
-    margin-bottom: 20px;
-}
-
-.hero-description {
-    color: var(--muted);
-    max-width: 700px;
-    margin-bottom: 25px;
-}
-
-.actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-}
-
-.button {
-    display: inline-block;
-    padding: 11px 17px;
-    border-radius: 10px;
-    border: 1px solid rgba(114,241,255,.35);
-    background: rgba(114,241,255,.07);
-    color: var(--cyan);
-    font-weight: 700;
-    font-size: .85rem;
-    text-decoration: none;
-    transition: .2s ease;
-}
-
-.button.primary {
-    background: linear-gradient(120deg, var(--cyan), #b5f7ff);
-    color: #091321;
-    border-color: transparent;
-}
-
-.button:hover {
-    transform: translateY(-2px);
-    filter: brightness(1.12);
-}
-
-.profile-card {
-    padding: 28px;
-    border: 1px solid rgba(114,241,255,.25);
-    border-radius: 22px;
-    text-align: center;
-    background: linear-gradient(145deg, rgba(25,38,62,.9), rgba(14,21,36,.96));
-    box-shadow: 0 20px 50px rgba(0,0,0,.25);
-}
-
-.profile-monogram {
-    width: 115px;
-    height: 115px;
-    margin: 0 auto 20px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: var(--cyan);
-    border: 2px solid var(--cyan);
-    background: radial-gradient(circle at top left, #283b59, #101729);
-    box-shadow: 0 0 35px rgba(114,241,255,.12);
-}
-
-.profile-card p {
-    color: var(--muted);
-    font-size: .85rem;
-}
-
-.stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 12px;
-    margin-top: 22px;
-}
-
-.stat {
-    padding: 13px;
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    background: rgba(255,255,255,.025);
-}
-
-.stat strong {
-    display: block;
-    color: var(--cyan);
-    font-size: 1.4rem;
-}
-
-.stat span {
-    color: var(--muted);
-    font-size: .68rem;
-    text-transform: uppercase;
-}
-
-.section-label {
-    display: block;
-    color: var(--cyan);
-    font-family: 'JetBrains Mono', monospace;
-    font-size: .75rem;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-}
-
-.section-title {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    line-height: 1.25;
-    margin-bottom: 30px;
-}
-
-/* Skills */
-
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 18px;
-}
-
-.skill-card {
-    background: rgba(19,29,50,.8);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 23px;
-}
-
-.skill-card h3 {
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
-
-.tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-}
-
-.tag {
-    display: inline-block;
-    padding: 5px 9px;
-    border: 1px solid rgba(114,241,255,.18);
-    border-radius: 7px;
-    color: #c9deee;
-    background: rgba(114,241,255,.04);
-    font: .7rem 'JetBrains Mono', monospace;
-}
-
-/* Project layout */
-
-.project-grid {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
-}
-
-.project-card {
-    min-width: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid var(--border);
-    border-radius: 20px;
-    background: linear-gradient(145deg, rgba(24,36,59,.95), rgba(13,20,35,.98));
-    transition: transform .25s, border-color .25s, box-shadow .25s;
-}
-
-.project-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(114,241,255,.5);
-    box-shadow: 0 20px 45px rgba(0,0,0,.22);
-}
-
-/* Every project illustration is drawn in this HTML.
-   No img elements, image URLs or image file paths are required. */
-
-.project-visual {
-    min-height: 270px;
-    padding: 22px;
-    display: grid;
-    place-items: center;
-    position: relative;
-    overflow: hidden;
-    background:
-        radial-gradient(circle at 20% 20%, rgba(114,241,255,.1), transparent 40%),
-        #0c1425;
-    border-bottom: 1px solid var(--border);
-}
-
-.project-visual::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    opacity: .28;
-    pointer-events: none;
-    background-image: radial-gradient(rgba(114,241,255,.4) .7px, transparent .7px);
-    background-size: 18px 18px;
-}
-
-.visual-window {
-    position: relative;
-    width: 100%;
-    max-width: 370px;
-    border: 1px solid rgba(114,241,255,.23);
-    background: rgba(11,17,31,.95);
-    border-radius: 14px;
-    padding: 17px;
-    box-shadow: 0 18px 45px rgba(0,0,0,.25);
-}
-
-.visual-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 16px;
-    color: var(--text);
-    font: .72rem 'JetBrains Mono', monospace;
-}
-
-.visual-status {
-    color: var(--green);
-    font-size: .65rem;
-}
-
-.visual-node {
-    padding: 11px;
-    border-radius: 9px;
-    border: 1px solid rgba(114,241,255,.19);
-    background: rgba(114,241,255,.045);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.node-icon {
-    display: grid;
-    place-items: center;
-    width: 37px;
-    height: 37px;
-    flex-shrink: 0;
-    border-radius: 9px;
-    color: var(--cyan);
-    background: rgba(114,241,255,.1);
-    font-size: 1.05rem;
-}
-
-.node-copy strong {
-    display: block;
-    font-size: .78rem;
-}
-
-.node-copy small {
-    display: block;
-    margin-top: 3px;
-    color: var(--muted);
-    font-size: .66rem;
-}
-
-.flow-arrow {
-    height: 24px;
-    padding-left: 25px;
-    color: var(--cyan);
-    font-family: 'JetBrains Mono', monospace;
-}
-
-.result-panel {
-    margin-top: 13px;
-    padding: 12px;
-    border: 1px solid rgba(138,247,182,.22);
-    border-radius: 9px;
-    background: rgba(138,247,182,.055);
-}
-
-.result-panel strong {
-    display: block;
-    color: var(--green);
-    font: .72rem 'JetBrains Mono', monospace;
-}
-
-.result-panel small {
-    display: block;
-    color: var(--muted);
-    margin-top: 4px;
-    font-size: .68rem;
-}
-
-/* Retro photobooth: code-drawn interface */
-
-.booth-visual {
-    background:
-        radial-gradient(circle at 80% 20%, rgba(255,120,209,.15), transparent 40%),
-        #161324;
-}
-
-.booth-window {
-    position: relative;
-    width: 100%;
-    max-width: 340px;
-    padding: 15px;
-    background: #11101d;
-    border: 1px solid rgba(255,120,209,.4);
-    border-radius: 16px;
-    box-shadow: 0 18px 45px rgba(0,0,0,.35);
-    transform: rotate(-1deg);
-}
-
-.booth-title {
-    text-align: center;
-    font-size: .95rem;
-    letter-spacing: .12em;
-    font-weight: 800;
-    color: var(--purple);
-    margin-bottom: 12px;
-}
-
-.booth-screen {
-    height: 128px;
-    border: 5px solid #282538;
-    border-radius: 10px;
-    background:
-        radial-gradient(ellipse at 50% 75%, #a64e91 0%, transparent 40%),
-        linear-gradient(140deg, #27223e, #0b1121);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    position: relative;
-}
-
-.booth-screen::before {
-    content: "";
-    width: 55px;
-    height: 55px;
-    border-radius: 50%;
-    position: absolute;
-    top: 15px;
-    background: #ffd5e9;
-    box-shadow: 0 48px 0 16px #d77fb7;
-}
-
-.booth-screen::after {
-    content: "LIVE PREVIEW";
-    position: absolute;
-    bottom: 7px;
-    left: 8px;
-    font: .58rem 'JetBrains Mono', monospace;
-    color: white;
-}
-
-.booth-strip {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 7px;
-    margin-top: 12px;
-}
-
-.booth-frame {
-    height: 53px;
-    border: 2px solid #fff0fa;
-    border-radius: 4px;
-    background: linear-gradient(150deg, #ffb6d9, #604778);
-    position: relative;
-    overflow: hidden;
-}
-
-.booth-frame:nth-child(2) {
-    background: linear-gradient(150deg, #c8d8ff, #504879);
-}
-
-.booth-frame:nth-child(3) {
-    background: linear-gradient(150deg, #ffd6a1, #7b4b7b);
-}
-
-.booth-frame::before {
-    content: "";
-    position: absolute;
-    width: 17px;
-    height: 17px;
-    border-radius: 50%;
-    background: rgba(255,255,255,.8);
-    top: 7px;
-    left: calc(50% - 8px);
-}
-
-.booth-frame::after {
-    content: "";
-    position: absolute;
-    width: 31px;
-    height: 28px;
-    border-radius: 50% 50% 0 0;
-    background: rgba(24,22,43,.8);
-    bottom: -7px;
-    left: calc(50% - 15px);
-}
-
-.booth-controls {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 12px;
-    color: var(--muted);
-    font: .63rem 'JetBrains Mono', monospace;
-}
-
-.booth-button {
-    color: #180f23;
-    font-weight: 800;
-    background: var(--purple);
-    padding: 5px 9px;
-    border-radius: 20px;
-}
-
-/* Mini ETL: code-drawn pipeline */
-
-.etl-visual {
-    background:
-        radial-gradient(circle at 80% 10%, rgba(108,139,255,.16), transparent 40%),
-        #10172a;
-}
-
-.etl-window {
-    width: 100%;
-    max-width: 390px;
-    padding: 17px;
-    background: rgba(10,16,30,.95);
-    border: 1px solid rgba(108,139,255,.35);
-    border-radius: 14px;
-}
-
-.etl-heading {
-    font: .72rem 'JetBrains Mono', monospace;
-    color: var(--blue);
-    margin-bottom: 15px;
-}
-
-.etl-flow {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0,1fr));
-    align-items: center;
-    gap: 8px;
-}
-
-.etl-stage {
-    min-height: 105px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 8px;
-    padding: 8px 4px;
-    border: 1px solid rgba(108,139,255,.35);
-    border-radius: 10px;
-    background: rgba(108,139,255,.07);
-}
-
-.etl-stage-icon {
-    font-size: 1.55rem;
-    color: var(--blue);
-}
-
-.etl-stage strong {
-    font-size: .69rem;
-}
-
-.etl-stage small {
-    color: var(--muted);
-    font-size: .57rem;
-}
-
-.etl-connector {
-    height: 2px;
-    background: var(--cyan);
-    position: relative;
-}
-
-.etl-connector::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: -4px;
-    border-top: 5px solid transparent;
-    border-bottom: 5px solid transparent;
-    border-left: 6px solid var(--cyan);
-}
-
-.etl-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    padding: 10px;
-    margin-top: 14px;
-    border-radius: 8px;
-    background: rgba(114,241,255,.06);
-    color: var(--muted);
-    font-size: .66rem;
-}
-
-.etl-footer strong {
-    color: var(--green);
-    font-family: 'JetBrains Mono', monospace;
-}
-
-/* Data Quality Monitoring: code-drawn dashboard */
-
-.monitor-visual {
-    background:
-        radial-gradient(circle at 20% 20%, rgba(138,247,182,.1), transparent 40%),
-        #0c1720;
-}
-
-.monitor-window {
-    width: 100%;
-    max-width: 390px;
-    padding: 17px;
-    border: 1px solid rgba(138,247,182,.24);
-    border-radius: 14px;
-    background: rgba(9,16,25,.96);
-}
-
-.monitor-heading {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 8px;
-    margin-bottom: 15px;
-    font: .7rem 'JetBrains Mono', monospace;
-}
-
-.monitor-heading span:last-child {
-    color: var(--green);
-    font-size: .62rem;
-}
-
-.monitor-metrics {
-    display: grid;
-    grid-template-columns: repeat(3,minmax(0,1fr));
-    gap: 8px;
-}
-
-.metric {
-    padding: 11px 5px;
-    text-align: center;
-    border: 1px solid var(--border);
-    border-radius: 9px;
-    background: rgba(255,255,255,.025);
-}
-
-.metric strong {
-    display: block;
-    font-size: 1.15rem;
-    color: var(--green);
-}
-
-.metric:nth-child(2) strong {
-    color: var(--yellow);
-}
-
-.metric:nth-child(3) strong {
-    color: var(--purple);
-}
-
-.metric small {
-    display: block;
-    color: var(--muted);
-    font-size: .58rem;
-}
-
-.monitor-chart-title {
-    margin: 18px 0 10px;
-    color: var(--muted);
-    font-size: .68rem;
-}
-
-.chart-bars {
-    display: flex;
-    align-items: end;
-    gap: 8px;
-    height: 72px;
-    padding: 0 8px;
-    border-bottom: 1px solid var(--border);
-}
-
-.chart-bar {
-    flex: 1;
-    border-radius: 4px 4px 0 0;
-    background: linear-gradient(180deg, var(--green), rgba(138,247,182,.15));
-}
-
-.check-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 9px;
-    color: var(--muted);
-    font-size: .68rem;
-}
-
-.check-dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--green);
-    flex-shrink: 0;
-}
-
-.check-dot.warning {
-    background: var(--yellow);
-}
-
-/* Batch pipeline: code-drawn diagram */
-
-.batch-visual {
-    background:
-        radial-gradient(circle at 15% 15%, rgba(114,241,255,.13), transparent 38%),
-        #0c1425;
-}
-
-.batch-window {
-    width: 100%;
-    max-width: 390px;
-    padding: 16px;
-    border: 1px solid rgba(114,241,255,.22);
-    border-radius: 15px;
-    background: rgba(9,15,28,.95);
-    box-shadow: 0 18px 40px rgba(0,0,0,.25);
-}
-
-.batch-heading {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-    font: .69rem 'JetBrains Mono', monospace;
-    margin-bottom: 15px;
-}
-
-.batch-heading span:last-child {
-    color: var(--green);
-    font-size: .61rem;
-}
-
-.batch-step {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    padding: 10px;
-    border: 1px solid rgba(114,241,255,.16);
-    border-radius: 9px;
-    background: rgba(114,241,255,.035);
-}
-
-.batch-step-icon {
-    width: 35px;
-    height: 35px;
-    flex-shrink: 0;
-    display: grid;
-    place-items: center;
-    border-radius: 9px;
-    background: rgba(114,241,255,.1);
-    color: var(--cyan);
-    font-size: 1.05rem;
-}
-
-.batch-step strong {
-    display: block;
-    font-size: .74rem;
-}
-
-.batch-step small {
-    display: block;
-    color: var(--muted);
-    font-size: .62rem;
-    margin-top: 2px;
-}
-
-.batch-arrow {
-    height: 21px;
-    padding-left: 22px;
-    color: var(--cyan);
-    font: .8rem 'JetBrains Mono', monospace;
-}
-
-.batch-summary {
-    margin-top: 13px;
-    padding: 11px;
-    border: 1px solid rgba(138,247,182,.22);
-    border-radius: 9px;
-    background: rgba(138,247,182,.055);
-}
-
-.batch-summary strong {
-    color: var(--green);
-    font: .68rem 'JetBrains Mono', monospace;
-}
-
-.batch-summary p {
-    color: var(--muted);
-    font-size: .65rem;
-    margin-top: 4px;
-}
-
-.project-content {
-    padding: 25px;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.project-status {
-    align-self: flex-start;
-    margin-bottom: 13px;
-    padding: 5px 10px;
-    border-radius: 30px;
-    color: var(--green);
-    background: rgba(138,247,182,.06);
-    border: 1px solid rgba(138,247,182,.2);
-    font: .65rem 'JetBrains Mono', monospace;
-    text-transform: uppercase;
-}
-
-.project-title {
-    font-size: 1.25rem;
-    line-height: 1.4;
-    margin-bottom: 12px;
-}
-
-.project-description-list {
-    color: var(--muted);
-    font-size: .83rem;
-    padding-left: 18px;
-    margin-bottom: 18px;
-}
-
-.project-description-list li {
-    margin-bottom: 7px;
-    padding-left: 3px;
-}
-
-.project-description-list li::marker {
-    color: var(--cyan);
-}
-
-.project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin-top: auto;
-}
-
-.project-links {
-    margin-top: 18px;
-}
-
-/* Experience */
-
-.timeline {
-    position: relative;
-    padding-left: 26px;
-}
-
-.timeline::before {
-    content: "";
-    position: absolute;
-    left: 6px;
-    top: 6px;
-    bottom: 10px;
-    width: 2px;
-    background: linear-gradient(var(--cyan), var(--purple), transparent);
-}
-
-.timeline-item {
-    position: relative;
-    margin-bottom: 25px;
-}
-
-.timeline-dot {
-    position: absolute;
-    top: 7px;
-    left: -26px;
-    width: 14px;
-    height: 14px;
-    background: var(--bg);
-    border: 3px solid var(--cyan);
-    border-radius: 50%;
-}
-
-.timeline-card {
-    padding: 23px;
-    border: 1px solid var(--border);
-    border-radius: 15px;
-    background: rgba(19,29,50,.75);
-}
-
-.timeline-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 12px;
-}
-
-.timeline-header h3 {
-    font-size: 1.05rem;
-}
-
-.company {
-    color: var(--cyan);
-    font-size: .86rem;
-}
-
-.date {
-    color: var(--muted);
-    font: .7rem 'JetBrains Mono', monospace;
-}
-
-.timeline-card ul {
-    color: var(--muted);
-    font-size: .84rem;
-    padding-left: 19px;
-}
-
-.timeline-card li {
-    margin-bottom: 7px;
-}
-
-/* Education */
-
-.education-grid {
-    display: grid;
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 24px;
-}
-
-.education-card {
-    padding: 22px;
-    margin-bottom: 12px;
-    border: 1px solid var(--border);
-    border-radius: 13px;
-    background: rgba(19,29,50,.7);
-}
-
-.education-card h3 {
-    font-size: .96rem;
-    margin-bottom: 5px;
-}
-
-.education-card p {
-    color: var(--muted);
-    font-size: .82rem;
-}
-
-.education-card .qualification {
-    color: var(--cyan);
-    margin-bottom: 8px;
-}
-
-/* Contact */
-
-.contact-box {
-    padding: 45px 25px;
-    text-align: center;
-    border: 1px solid rgba(114,241,255,.25);
-    border-radius: 20px;
-    background: linear-gradient(120deg,rgba(114,241,255,.08),rgba(255,120,209,.08));
-}
-
-.contact-box h2 {
-    font-size: clamp(1.7rem,4vw,2.5rem);
-    margin-bottom: 12px;
-}
-
-.contact-box p {
-    max-width: 650px;
-    margin: 0 auto 23px;
-    color: var(--muted);
-}
-
-.contact-box .actions {
-    justify-content: center;
-}
-
-footer {
-    border-top: 1px solid var(--border);
-    padding: 25px 0;
-    text-align: center;
-    color: var(--muted);
-    font-size: .8rem;
-}
-
-@media(max-width: 850px) {
-    .nav-inner {
-        padding: 14px 0;
-        flex-direction: column;
-        align-items: flex-start;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Yaseerah Kader's portfolio showcasing software engineering, data engineering, and data analytics projects.">
+  <title>Yaseerah Kader | Data & Software Engineering</title>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --panel: #121a2e;
+      --panel-light: #18233b;
+      --text: #f3f6ff;
+      --muted: #a6b1ca;
+      --cyan: #54e6d0;
+      --purple: #a88bff;
+      --pink: #ff8fbd;
+      --border: rgba(255,255,255,.1);
     }
 
-    nav ul {
-        gap: 10px 16px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    .hero {
-        grid-template-columns: 1fr;
-        padding-top: 55px;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
     }
 
-    .profile-card {
-        max-width: 420px;
-        width: 100%;
-        margin: auto;
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
     }
 
-    .project-grid {
-        grid-template-columns: 1fr;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
-}
 
-@media(max-width: 600px) {
     .container {
-        width: min(100% - 28px, 1140px);
+      width: min(1100px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11,16,32,.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+
+    .logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--cyan);
     }
 
     section {
-        padding: 50px 0;
+      padding: 85px 0;
     }
 
-    .skills-grid,
-    .education-grid {
-        grid-template-columns: 1fr;
+    .hero {
+      min-height: 570px;
+      display: flex;
+      align-items: center;
+      background:
+        radial-gradient(ellipse at 85% 25%, rgba(168,139,255,.15), transparent 35%),
+        radial-gradient(ellipse at 15% 80%, rgba(84,230,208,.1), transparent 35%);
     }
 
+    .eyebrow {
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-bottom: 15px;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 7vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -2px;
+      max-width: 800px;
+    }
+
+    h1 span {
+      color: var(--cyan);
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 680px;
+      margin: 24px 0;
+      font-size: 1.08rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 11px 19px;
+      border-radius: 8px;
+      border: 1px solid var(--cyan);
+      font-weight: 700;
+      transition: .2s ease;
+    }
+
+    .btn-primary {
+      color: #07131b;
+      background: var(--cyan);
+    }
+
+    .btn-outline {
+      color: var(--cyan);
+      background: transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 7px 25px rgba(84,230,208,.12);
+    }
+
+    .section-heading {
+      margin-bottom: 32px;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      max-width: 680px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 24px;
+    }
+
+    .panel {
+      padding: 27px;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+
+    .panel p {
+      color: var(--muted);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stat {
+      padding: 20px;
+      background: var(--panel-light);
+      border-radius: 12px;
+    }
+
+    .stat strong {
+      display: block;
+      color: var(--cyan);
+      font-size: 1.1rem;
+      margin-bottom: 5px;
+    }
+
+    .stat span {
+      font-size: .85rem;
+      color: var(--muted);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .skill-card h3 {
+      margin-bottom: 14px;
+      color: var(--cyan);
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tag {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      padding: 5px 10px;
+      border-radius: 7px;
+      color: #dbe3f7;
+      font-size: .83rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .project-card {
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      transition: transform .25s ease, border-color .25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(84,230,208,.55);
+    }
+
+    /* Visuals are drawn entirely with HTML and CSS. */
     .project-visual {
-        min-height: 245px;
-        padding: 14px;
+      height: 225px;
+      padding: 22px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(84,230,208,.14), transparent 35%),
+        #0e1628;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .visual-label {
+      position: absolute;
+      left: 17px;
+      top: 14px;
+      font-size: .7rem;
+      color: var(--muted);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    /* Retro Photobooth illustration */
+    .photo-booth {
+      width: 185px;
+      padding: 13px;
+      background: #f1d9b7;
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(255,143,189,.14);
+      transform: rotate(-3deg);
+    }
+
+    .photo-screen {
+      background: #292035;
+      border-radius: 7px;
+      padding: 9px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6px;
+    }
+
+    .snapshot {
+      height: 48px;
+      border-radius: 4px;
+      background: linear-gradient(140deg, #ffb9d5, #7659a6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .snapshot:nth-child(2) {
+      background: linear-gradient(140deg, #f9d59d, #dd7e91);
+    }
+
+    .snapshot:nth-child(3) {
+      background: linear-gradient(140deg, #9ee8d5, #547da5);
+    }
+
+    .snapshot:nth-child(4) {
+      background: linear-gradient(140deg, #e8b7f4, #7254a6);
+    }
+
+    .snapshot::before {
+      content: "";
+      position: absolute;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      background: #f8e4d5;
+      top: 7px;
+      left: calc(50% - 8px);
+    }
+
+    .snapshot::after {
+      content: "";
+      position: absolute;
+      width: 32px;
+      height: 23px;
+      border-radius: 50% 50% 0 0;
+      background: #f8e4d5;
+      top: 27px;
+      left: calc(50% - 16px);
+    }
+
+    .booth-caption {
+      text-align: center;
+      color: #47364b;
+      font-size: .65rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      margin-top: 7px;
+    }
+
+    /* ETL illustration */
+    .etl-diagram {
+      width: 100%;
+      max-width: 430px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .etl-node {
+      width: 29%;
+      min-height: 86px;
+      padding: 10px 4px;
+      border: 1px solid rgba(84,230,208,.4);
+      background: #14283a;
+      border-radius: 10px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .etl-node strong {
+      font-size: .82rem;
+      color: var(--cyan);
+    }
+
+    .etl-node span {
+      color: var(--muted);
+      font-size: .68rem;
+    }
+
+    .etl-arrow {
+      color: var(--purple);
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+
+    /* Data quality illustration */
+    .quality-window {
+      width: 90%;
+      max-width: 390px;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid rgba(168,139,255,.35);
+      background: #111a2c;
+    }
+
+    .window-bar {
+      display: flex;
+      gap: 5px;
+      padding: 10px;
+      background: #1b2940;
+    }
+
+    .window-bar i {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--pink);
+    }
+
+    .window-bar i:nth-child(2) { background: #f2cc82; }
+    .window-bar i:nth-child(3) { background: var(--cyan); }
+
+    .quality-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 10px;
+      padding: 10px 13px;
+      border-bottom: 1px solid var(--border);
+      font-size: .76rem;
+    }
+
+    .quality-row:last-child { border: 0; }
+
+    .pass { color: var(--cyan); }
+    .warn { color: #ffc879; }
+
+    /* Batch pipeline illustration */
+    .batch-board {
+      width: 90%;
+      max-width: 390px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .batch-step {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      padding: 11px 14px;
+      background: #162239;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+    }
+
+    .batch-icon {
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: rgba(84,230,208,.12);
+      color: var(--cyan);
+      font-weight: 800;
+    }
+
+    .batch-step strong {
+      font-size: .84rem;
+      display: block;
+    }
+
+    .batch-step small {
+      color: var(--muted);
+      font-size: .72rem;
     }
 
     .project-content {
-        padding: 20px;
+      padding: 23px;
     }
 
-    .etl-flow {
-        gap: 5px;
+    .project-content h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
     }
 
-    .etl-stage {
-        min-height: 95px;
+    .project-content p {
+      color: var(--muted);
+      font-size: .94rem;
+      margin-bottom: 17px;
     }
 
-    .etl-stage strong {
-        font-size: .61rem;
+    .project-content .tags {
+      margin-bottom: 20px;
     }
 
-    .etl-stage small {
-        font-size: .52rem;
-    }
-}
-
-@media(prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
+    .project-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    *,
-    *::before,
-    *::after {
-        transition-duration: .01ms !important;
-        animation-duration: .01ms !important;
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      color: var(--cyan);
+      font-size: .9rem;
     }
-}
-</style>
+
+    .text-link:hover {
+      text-decoration: underline;
+    }
+
+    .timeline {
+      border-left: 2px solid rgba(84,230,208,.35);
+      padding-left: 24px;
+      display: grid;
+      gap: 25px;
+    }
+
+    .timeline-item {
+      position: relative;
+    }
+
+    .timeline-item::before {
+      content: "";
+      position: absolute;
+      left: -31px;
+      top: 8px;
+      width: 12px;
+      height: 12px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 12px rgba(84,230,208,.3);
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 5px;
+    }
+
+    .timeline-item .meta {
+      color: var(--cyan);
+      font-size: .85rem;
+      margin-bottom: 8px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .contact-panel {
+      text-align: center;
+      background:
+        radial-gradient(ellipse at top, rgba(84,230,208,.1), transparent 55%),
+        var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 48px 24px;
+    }
+
+    .contact-panel h2 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      margin-bottom: 12px;
+    }
+
+    .contact-panel p {
+      color: var(--muted);
+      margin: 0 auto 20px;
+      max-width: 600px;
+    }
+
+    footer {
+      padding: 25px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: .85rem;
+      text-align: center;
+    }
+
+    @media (max-width: 760px) {
+      nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 14px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      .about-grid,
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 500px;
+      }
+
+      .project-visual {
+        height: 210px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .etl-diagram { gap: 4px; }
+      .etl-arrow { font-size: 1rem; }
+      .etl-node strong { font-size: .72rem; }
+      .etl-node span { font-size: .62rem; }
+      .nav-links { gap: 10px; }
+    }
+  </style>
 </head>
 
 <body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">Y_K.</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#experience">Background</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-    <div class="container nav-inner">
-        <a class="brand" href="#about">YASEERAH<span>.</span> KADER</a>
-
-        <nav aria-label="Main navigation">
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<main class="container">
-
-<!-- ABOUT -->
-<section id="about" class="hero">
-    <div>
-        <div class="availability">Open to Software & Data Opportunities</div>
-
-        <h1>Yaseerah Kader</h1>
-
-        <p class="hero-subtitle">
-            SOFTWARE ENGINEERING · DATA ENGINEERING · ANALYTICS
+  <main>
+    <section class="hero" id="home">
+      <div class="container">
+        <div class="eyebrow">Software Engineering · Data · Analytics</div>
+        <h1>Turning data into <span>meaningful insights.</span></h1>
+        <p>
+          I'm Yaseerah Kader, an aspiring data professional with a software
+          engineering foundation and a growing focus on data engineering,
+          data analytics, and building practical technology solutions.
         </p>
-
-        <p class="hero-description">
-            Software and Data Engineering graduate with an interest in data pipelines,
-            analytics, business intelligence, and AI. I enjoy using technology to solve
-            practical problems, improve data quality, and turn raw data into useful insights.
-            I am building hands-on projects to strengthen my technical skills and create
-            reliable, data-driven solutions.
-        </p>
-
         <div class="actions">
-            <a class="button primary" href="mailto:yaseerahkader2309@gmail.com">Contact Me ↗</a>
-            <a class="button" href="https://github.com/Yaseerahk" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a class="button" href="https://linkedin.com/in/yaseerah-kader-ab509528a" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+          <a class="btn btn-primary" href="#projects">Explore my projects ↘</a>
+          <a class="btn btn-outline" href="#contact">Let's connect</a>
         </div>
-    </div>
+      </div>
+    </section>
 
-    <aside class="profile-card">
-        <div class="profile-monogram" aria-label="Y K initials">Y_K</div>
-        <h2>Yaseerah Kader</h2>
-        <p>Software & Data Engineering</p>
-
-        <div class="stats">
-            <div class="stat">
-                <strong>4</strong>
-                <span>Portfolio Projects</span>
-            </div>
-            <div class="stat">
-                <strong>3</strong>
-                <span>Core Focus Areas</span>
-            </div>
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">A little about me</div>
+          <h2>Curious about data. Focused on solving problems.</h2>
         </div>
-    </aside>
-</section>
 
-<!-- SKILLS -->
-<section id="skills">
-    <span class="section-label">// Technical toolkit</span>
-    <h2 class="section-title">Skills & Expertise</h2>
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              My journey started with software engineering and expanded into
+              data engineering and analytics. I enjoy understanding how data
+              moves through systems, identifying data quality issues, and
+              transforming raw information into something useful.
+              <br><br>
+              Through hands-on projects, I am developing my skills in Python,
+              SQL, data processing, validation, and building reliable workflows.
+              I am interested in opportunities where I can keep learning,
+              contribute to a team, and solve real-world problems with data.
+            </p>
+          </div>
 
-    <div class="skills-grid">
-        <article class="skill-card">
-            <h3>⚡ Data Engineering</h3>
-            <div class="tags">
-                <span class="tag">SQL</span>
-                <span class="tag">ETL Pipelines</span>
-                <span class="tag">Data Validation</span>
-                <span class="tag">Batch Processing</span>
-                <span class="tag">Data Modelling</span>
-                <span class="tag">Data Warehousing</span>
+          <div class="stat-grid">
+            <div class="stat">
+              <strong>Python</strong>
+              <span>Automation & data processing</span>
             </div>
-        </article>
-
-        <article class="skill-card">
-            <h3>📊 Analytics & BI</h3>
-            <div class="tags">
-                <span class="tag">Excel</span>
-                <span class="tag">Power BI</span>
-                <span class="tag">Data Visualisation</span>
-                <span class="tag">KPI Analysis</span>
-                <span class="tag">Dashboard Design</span>
-                <span class="tag">Reporting</span>
+            <div class="stat">
+              <strong>SQL</strong>
+              <span>Data querying & storage</span>
             </div>
-        </article>
+            <div class="stat">
+              <strong>Data Quality</strong>
+              <span>Validation & reliability</span>
+            </div>
+            <div class="stat">
+              <strong>Analytics</strong>
+              <span>Insights & problem-solving</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <article class="skill-card">
-            <h3>💻 Programming</h3>
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Technical toolkit</div>
+          <h2>Skills I'm building and applying</h2>
+          <p>A combination of engineering foundations, data tools, and analytical thinking.</p>
+        </div>
+
+        <div class="skills-grid">
+          <div class="panel skill-card">
+            <h3>Data Engineering</h3>
             <div class="tags">
-                <span class="tag">Python</span>
-                <span class="tag">Pandas</span>
-                <span class="tag">Java</span>
-                <span class="tag">JavaScript</span>
+              <span class="tag">Python</span>
+              <span class="tag">ETL Pipelines</span>
+              <span class="tag">Pandas</span>
+              <span class="tag">Data Validation</span>
+              <span class="tag">SQL</span>
+              <span class="tag">Logging</span>
+            </div>
+          </div>
+
+          <div class="panel skill-card">
+            <h3>Data Analytics</h3>
+            <div class="tags">
+              <span class="tag">Excel</span>
+              <span class="tag">Data Cleaning</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Power BI</span>
+              <span class="tag">Reporting</span>
+              <span class="tag">Problem Solving</span>
+            </div>
+          </div>
+
+          <div class="panel skill-card">
+            <h3>Software & Tools</h3>
+            <div class="tags">
+              <span class="tag">Git</span>
+              <span class="tag">GitHub</span>
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">VS Code</span>
+              <span class="tag">Cybersecurity Fundamentals</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Selected work</div>
+          <h2>Projects & practical learning</h2>
+          <p>Hands-on projects that demonstrate how I approach building, processing, and checking data.</p>
+        </div>
+
+        <div class="projects-grid">
+
+          <!-- PROJECT 1: RETRO PHOTOBOOTH -->
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="visual-label">01 / Interactive web app</span>
+              <div class="photo-booth" aria-label="CSS illustration of a retro photobooth">
+                <div class="photo-screen">
+                  <div class="snapshot"></div>
+                  <div class="snapshot"></div>
+                  <div class="snapshot"></div>
+                  <div class="snapshot"></div>
+                </div>
+                <div class="booth-caption">PHOTO MEMORIES</div>
+              </div>
+            </div>
+
+            <div class="project-content">
+              <h3>Retro Photobooth</h3>
+              <p>
+                A retro-inspired photobooth project focused on a playful visual
+                experience and a nostalgic photo-strip aesthetic.
+              </p>
+              <div class="tags">
                 <span class="tag">HTML</span>
                 <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">UI Design</span>
+              </div>
+              <div class="project-links">
+                <a class="text-link"
+                   href="https://github.com/Yaseerahk/retro-photobooth-"
+                   target="_blank" rel="noopener noreferrer">
+                  View GitHub Repository ↗
+                </a>
+              </div>
             </div>
-        </article>
+          </article>
 
-        <article class="skill-card">
-            <h3>🛠️ Tools & Methods</h3>
-            <div class="tags">
-                <span class="tag">Git</span>
-                <span class="tag">GitHub</span>
-                <span class="tag">VS Code</span>
-                <span class="tag">SQLite</span>
-                <span class="tag">CSV Processing</span>
-                <span class="tag">Problem Solving</span>
-            </div>
-        </article>
-    </div>
-</section>
-
-<!-- PROJECTS -->
-<section id="projects">
-    <span class="section-label">// Selected work</span>
-    <h2 class="section-title">Featured Projects</h2>
-
-    <div class="project-grid">
-
-        <!-- PROJECT 1: RETRO PHOTOBOOTH -->
-        <article class="project-card">
-            <div class="project-visual booth-visual">
-                <div class="booth-window">
-                    <div class="booth-title">RETRO PHOTOBOOTH</div>
-
-                    <div class="booth-screen"></div>
-
-                    <div class="booth-strip">
-                        <div class="booth-frame"></div>
-                        <div class="booth-frame"></div>
-                        <div class="booth-frame"></div>
-                    </div>
-
-                    <div class="booth-controls">
-                        <span>FILTER: VINTAGE</span>
-                        <span class="booth-button">CAPTURE</span>
-                    </div>
+          <!-- PROJECT 2: ETL PIPELINE -->
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="visual-label">02 / Data engineering</span>
+              <div class="etl-diagram" aria-label="CSS illustration of an extract transform load pipeline">
+                <div class="etl-node">
+                  <strong>EXTRACT</strong>
+                  <span>Read data</span>
                 </div>
+                <span class="etl-arrow">→</span>
+                <div class="etl-node">
+                  <strong>TRANSFORM</strong>
+                  <span>Clean data</span>
+                </div>
+                <span class="etl-arrow">→</span>
+                <div class="etl-node">
+                  <strong>LOAD</strong>
+                  <span>Store data</span>
+                </div>
+              </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Interactive Web Project</span>
-                <h3 class="project-title">Retro Photobooth</h3>
-
-                <ul class="project-description-list">
-                    <li>Designed a retro-inspired photobooth interface.</li>
-                    <li>Explores browser camera functionality and photo capture.</li>
-                    <li>Uses a responsive layout and vintage-inspired visual styling.</li>
-                </ul>
-
-                <div class="project-tags">
-                    <span class="tag">HTML</span>
-                    <span class="tag">CSS</span>
-                    <span class="tag">JavaScript</span>
-                    <span class="tag">Camera API</span>
-                </div>
+              <h3>Mini ETL Pipeline</h3>
+              <p>
+                A data engineering project demonstrating the extract,
+                transform, and load workflow for moving data through
+                a repeatable processing pipeline.
+              </p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">SQL</span>
+                <span class="tag">ETL</span>
+              </div>
+              <div class="project-links">
+                <a class="text-link"
+                   href="https://github.com/Yaseerahk/ETL-Pipeline"
+                   target="_blank" rel="noopener noreferrer">
+                  View GitHub Repository ↗
+                </a>
+              </div>
             </div>
-        </article>
+          </article>
 
-        <!-- PROJECT 2: MINI ETL PIPELINE -->
-        <article class="project-card">
-            <div class="project-visual etl-visual">
-                <div class="etl-window">
-                    <div class="etl-heading">MINI ETL PIPELINE / WORKFLOW</div>
-
-                    <div class="etl-flow">
-                        <div class="etl-stage">
-                            <span class="etl-stage-icon">⇩</span>
-                            <strong>EXTRACT</strong>
-                            <small>API / CSV</small>
-                        </div>
-
-                        <div class="etl-connector"></div>
-
-                        <div class="etl-stage">
-                            <span class="etl-stage-icon">⚙</span>
-                            <strong>TRANSFORM</strong>
-                            <small>Clean data</small>
-                        </div>
-
-                        <div class="etl-connector"></div>
-
-                        <div class="etl-stage">
-                            <span class="etl-stage-icon">▤</span>
-                            <strong>LOAD</strong>
-                            <small>SQLite</small>
-                        </div>
-                    </div>
-
-                    <div class="etl-footer">
-                        <span>Pipeline workflow</span>
-                        <strong>→ COMPLETE FLOW</strong>
-                    </div>
+          <!-- PROJECT 3: DATA QUALITY MONITOR -->
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="visual-label">03 / Data reliability</span>
+              <div class="quality-window" aria-label="CSS illustration of data quality checks">
+                <div class="window-bar">
+                  <i></i><i></i><i></i>
                 </div>
+                <div class="quality-row">
+                  <span>Required columns</span>
+                  <strong class="pass">✓ PASS</strong>
+                </div>
+                <div class="quality-row">
+                  <span>Missing values</span>
+                  <strong class="pass">✓ CHECKED</strong>
+                </div>
+                <div class="quality-row">
+                  <span>Duplicate records</span>
+                  <strong class="warn">! REVIEW</strong>
+                </div>
+                <div class="quality-row">
+                  <span>Data validation</span>
+                  <strong class="pass">✓ COMPLETE</strong>
+                </div>
+              </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Data Engineering</span>
-                <h3 class="project-title">Mini ETL Pipeline</h3>
-
-                <ul class="project-description-list">
-                    <li>Extracts data from a source such as an API or CSV file.</li>
-                    <li>Cleans and transforms records before loading them into a SQLite database.</li>
-                    <li>Supports duplicate handling, validation, and processing logs.</li>
-                    <li>Demonstrates the core stages of an extract, transform, and load workflow.</li>
-                </ul>
-
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">SQLite</span>
-                    <span class="tag">ETL</span>
-                </div>
+              <h3>Data Quality Monitoring Tool</h3>
+              <p>
+                A Python-based tool designed to identify data quality issues,
+                including missing values, duplicate records, invalid values,
+                and required-column problems.
+              </p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Data Quality</span>
+              </div>
+              <div class="project-links">
+                <span class="text-link">Portfolio project</span>
+              </div>
             </div>
-        </article>
+          </article>
 
-        <!-- PROJECT 3: DATA QUALITY MONITORING TOOL -->
-        <article class="project-card">
-            <div class="project-visual monitor-visual">
-                <div class="monitor-window">
-                    <div class="monitor-heading">
-                        <span>DATA QUALITY MONITOR</span>
-                        <span>● CHECKS</span>
-                    </div>
-
-                    <div class="monitor-metrics">
-                        <div class="metric">
-                            <strong>01</strong>
-                            <small>Null checks</small>
-                        </div>
-                        <div class="metric">
-                            <strong>02</strong>
-                            <small>Duplicates</small>
-                        </div>
-                        <div class="metric">
-                            <strong>03</strong>
-                            <small>Validations</small>
-                        </div>
-                    </div>
-
-                    <p class="monitor-chart-title">DATA QUALITY OVERVIEW</p>
-
-                    <div class="chart-bars" aria-label="Decorative data quality bar chart">
-                        <div class="chart-bar" style="height:48%"></div>
-                        <div class="chart-bar" style="height:73%"></div>
-                        <div class="chart-bar" style="height:59%"></div>
-                        <div class="chart-bar" style="height:90%"></div>
-                        <div class="chart-bar" style="height:76%"></div>
-                        <div class="chart-bar" style="height:98%"></div>
-                        <div class="chart-bar" style="height:83%"></div>
-                    </div>
-
-                    <div class="check-row">
-                        <span class="check-dot"></span>
-                        Required column checks
-                    </div>
-                    <div class="check-row">
-                        <span class="check-dot"></span>
-                        Duplicate record checks
-                    </div>
-                    <div class="check-row">
-                        <span class="check-dot warning"></span>
-                        Invalid value checks
-                    </div>
+          <!-- PROJECT 4: BATCH DATA QUALITY PIPELINE -->
+          <article class="project-card">
+            <div class="project-visual">
+              <span class="visual-label">04 / Batch processing</span>
+              <div class="batch-board" aria-label="CSS illustration of a batch data quality pipeline">
+                <div class="batch-step">
+                  <span class="batch-icon">1</span>
+                  <div>
+                    <strong>Load batch</strong>
+                    <small>Read transaction records</small>
+                  </div>
                 </div>
+                <div class="batch-step">
+                  <span class="batch-icon">2</span>
+                  <div>
+                    <strong>Validate records</strong>
+                    <small>Check required fields and values</small>
+                  </div>
+                </div>
+                <div class="batch-step">
+                  <span class="batch-icon">3</span>
+                  <div>
+                    <strong>Report results</strong>
+                    <small>Surface data quality issues</small>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="project-content">
-                <span class="project-status">Data Quality</span>
-                <h3 class="project-title">Data Quality Monitoring Tool</h3>
-
-                <ul class="project-description-list">
-                    <li>Checks datasets for missing values, duplicate records, and invalid values.</li>
-                    <li>Validates required columns and unique identifiers.</li>
-                    <li>Produces a pass/fail quality report for review.</li>
-                    <li>Helps identify data issues before downstream analysis and reporting.</li>
-                </ul>
-
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">SQL</span>
-                    <span class="tag">Data Validation</span>
-                </div>
+              <h3>Batch Data Quality Pipeline</h3>
+              <p>
+                A batch-processing project that validates transaction data
+                against required columns and helps identify problems before
+                downstream analysis.
+              </p>
+              <div class="tags">
+                <span class="tag">Python</span>
+                <span class="tag">Pandas</span>
+                <span class="tag">CSV</span>
+                <span class="tag">Validation</span>
+              </div>
+              <div class="project-links">
+                <span class="text-link">Portfolio project</span>
+              </div>
             </div>
-        </article>
+          </article>
 
-        <!-- PROJECT 4: BATCH DATA QUALITY PIPELINE -->
-        <article class="project-card">
-            <div class="project-visual batch-visual">
-                <div class="batch-window">
-                    <div class="batch-heading">
-                        <span>BATCH DATA PIPELINE</span>
-                        <span>● DATA QA</span>
-                    </div>
+        </div>
+      </div>
+    </section>
 
-                    <div class="batch-step">
-                        <div class="batch-step-icon">▤</div>
-                        <div>
-                            <strong>CSV Batch Input</strong>
-                            <small>Load transaction records</small>
-                        </div>
-                    </div>
-
-                    <div class="batch-arrow">↓</div>
-
-                    <div class="batch-step">
-                        <div class="batch-step-icon">Py</div>
-                        <div>
-                            <strong>Python + Pandas</strong>
-                            <small>Read and inspect records</small>
-                        </div>
-                    </div>
-
-                    <div class="batch-arrow">↓</div>
-
-                    <div class="batch-step">
-                        <div class="batch-step-icon">⌕</div>
-                        <div>
-                            <strong>Quality Validation</strong>
-                            <small>Required fields and values</small>
-                        </div>
-                    </div>
-
-                    <div class="batch-arrow">↓</div>
-
-                    <div class="batch-summary">
-                        <strong>✓ VALIDATION SUMMARY</strong>
-                        <p>Review data quality before downstream use.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-content">
-                <span class="project-status">Data Engineering</span>
-                <h3 class="project-title">Batch Data Quality Pipeline</h3>
-
-                <ul class="project-description-list">
-                    <li>Processes batches of CSV transaction data with Python and Pandas.</li>
-                    <li>Checks for required fields: transaction ID, customer ID, amount, and transaction date.</li>
-                    <li>Helps detect data quality issues before analysis and reporting.</li>
-                    <li>Demonstrates structured batch validation and repeatable data processing.</li>
-                </ul>
-
-                <div class="project-tags">
-                    <span class="tag">Python</span>
-                    <span class="tag">Pandas</span>
-                    <span class="tag">CSV</span>
-                    <span class="tag">Batch Processing</span>
-                    <span class="tag">Data Validation</span>
-                </div>
-
-                <div class="project-links">
-                    <a
-                        class="button"
-                        href="https://github.com/Yaseerahk/batch-data-quality-pipeline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >View GitHub Repository ↗</a>
-                </div>
-            </div>
-        </article>
-
-    </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section id="experience">
-    <span class="section-label">// Professional journey</span>
-    <h2 class="section-title">Experience</h2>
-
-    <div class="timeline">
-        <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-card">
-                <div class="timeline-header">
-                    <div>
-                        <h3>Data Analytics Intern</h3>
-                        <p class="company">Ogilvy</p>
-                    </div>
-                    <span class="date">2026 – Present</span>
-                </div>
-
-                <ul>
-                    <li>Analyse campaign performance, engagement, and KPI trends.</li>
-                    <li>Support data validation, reporting, and dashboard-related work.</li>
-                    <li>Work with digital analytics and tracking concepts, including GA4 and Google Tag Manager.</li>
-                    <li>Explore opportunities to apply data engineering and analytics skills to business problems.</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-card">
-                <div class="timeline-header">
-                    <div>
-                        <h3>Administration & Data Capturing</h3>
-                        <p class="company">Medicoll Claims Bureau</p>
-                    </div>
-                    <span class="date">2024</span>
-                </div>
-
-                <ul>
-                    <li>Supported data capturing, record maintenance, and administrative workflows.</li>
-                    <li>Handled information carefully, with attention to accuracy and organisation.</li>
-                </ul>
-            </div>
-        </article>
-
-        <article class="timeline-item">
-            <span class="timeline-dot"></span>
-            <div class="timeline-card">
-                <div class="timeline-header">
-                    <div>
-                        <h3>Administration & Documentation</h3>
-                        <p class="company">Bliss Sanctuary Africa</p>
-                    </div>
-                    <span class="date">2024</span>
-                </div>
-
-                <ul>
-                    <li>Supported documentation, record organisation, and administrative tasks.</li>
-                </ul>
-            </div>
-        </article>
-    </div>
-</section>
-
-<!-- EDUCATION -->
-<section id="education">
-    <span class="section-label">// Learning & development</span>
-    <h2 class="section-title">Education & Certifications</h2>
-
-    <div class="education-grid">
-        <div>
-            <article class="education-card">
-                <h3>WeThinkCode_</h3>
-                <p class="qualification">Software Engineering Diploma</p>
-                <p>Software development, programming, technical problem-solving, and software engineering fundamentals.</p>
-            </article>
-
-            <article class="education-card">
-                <h3>Alison</h3>
-                <p class="qualification">Diploma in Data Analytics</p>
-                <p>Data analysis concepts and techniques for interpreting information and supporting decisions.</p>
-            </article>
-
-            <article class="education-card">
-                <h3>Alison</h3>
-                <p class="qualification">Diploma in Cyber Security</p>
-                <p>Cybersecurity fundamentals and digital security concepts.</p>
-            </article>
+    <section id="experience">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Education & development</div>
+          <h2>My learning journey</h2>
+          <p>Building a foundation through formal learning, certifications, and hands-on projects.</p>
         </div>
 
-        <div>
-            <article class="education-card">
-                <h3>Technical Development</h3>
-                <p class="qualification">Data Engineering Portfolio</p>
-                <p>Hands-on practice with Python, Pandas, SQL, ETL workflows, CSV processing, and data quality checks.</p>
-            </article>
+        <div class="panel">
+          <div class="timeline">
+            <div class="timeline-item">
+              <h3>Software Engineering Diploma</h3>
+              <div class="meta">WeThinkCode</div>
+              <p>
+                Developed a foundation in software engineering and technical
+                problem-solving, which supports my continued learning in data.
+              </p>
+            </div>
 
-            <article class="education-card">
-                <h3>Data Analytics & Business Intelligence</h3>
-                <p class="qualification">Ongoing Skills Development</p>
-                <p>Building practical knowledge in data visualisation, dashboards, reporting, and analytics workflows.</p>
-            </article>
+            <div class="timeline-item">
+              <h3>Diploma in Data Analytics</h3>
+              <div class="meta">Alison</div>
+              <p>
+                Learning to work with data to uncover patterns, support
+                decision-making, and communicate insights.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <h3>Diploma in Cyber Security</h3>
+              <div class="meta">Alison</div>
+              <p>
+                Developed foundational knowledge of cybersecurity concepts
+                and the importance of protecting technical systems.
+              </p>
+            </div>
+
+            <div class="timeline-item">
+              <h3>Practical Data Engineering Projects</h3>
+              <div class="meta">Independent learning</div>
+              <p>
+                Applying Python, SQL, data processing, and validation concepts
+                through projects that strengthen my engineering skills.
+              </p>
+            </div>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
 
-<!-- CONTACT -->
-<section id="contact">
-    <div class="contact-box">
-        <span class="section-label">// Get in touch</span>
-        <h2>Let's Build Something Meaningful</h2>
-
-        <p>
-            I am interested in opportunities in software engineering, data engineering,
-            data analytics, and AI where I can keep learning, contribute to real projects,
-            and build solutions that make a difference.
-        </p>
-
-        <div class="actions">
-            <a class="button primary" href="mailto:yaseerahkader2309@gmail.com">Email Me ↗</a>
-            <a class="button" href="https://github.com/Yaseerahk" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-            <a class="button" href="https://linkedin.com/in/yaseerah-kader-ab509528a" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div class="eyebrow">Let's connect</div>
+          <h2>Open to learning and new opportunities.</h2>
+          <p>
+            I'm interested in opportunities across data engineering,
+            data analytics, and software development where I can contribute,
+            grow, and solve meaningful problems.
+          </p>
+          <div class="actions" style="justify-content:center">
+            <a class="btn btn-primary"
+               href="https://github.com/Yaseerahk"
+               target="_blank" rel="noopener noreferrer">
+              GitHub Profile ↗
+            </a>
+            <a class="btn btn-outline"
+               href="https://www.linkedin.com/"
+               target="_blank" rel="noopener noreferrer">
+              LinkedIn
+            </a>
+          </div>
         </div>
-    </div>
-</section>
+      </div>
+    </section>
+  </main>
 
-</main>
-
-<footer>
+  <footer>
     <div class="container">
-        <p>© 2026 Yaseerah Kader · Built with HTML and CSS</p>
+      © <span id="year"></span> Yaseerah Kader · Built with HTML and CSS.
     </div>
-</footer>
+  </footer>
 
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
