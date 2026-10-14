@@ -1,4 +1,4 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -199,19 +199,24 @@ h1 {
     box-shadow: 0 20px 50px rgba(0,0,0,.25);
 }
 
+/* Scenic landscape embedded directly in the HTML */
+
 .profile-monogram {
     width: 115px;
     height: 115px;
     margin: 0 auto 20px;
     border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 2.6rem;
-    font-weight: 800;
-    color: var(--cyan);
+    overflow: hidden;
     border: 2px solid var(--cyan);
-    background: radial-gradient(circle at top left, #283b59, #101729);
-    box-shadow: 0 0 35px rgba(114,241,255,.12);
+    background: #101729;
+    box-shadow: 0 0 35px rgba(114,241,255,.18);
+}
+
+.profile-landscape {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .profile-card p {
@@ -322,8 +327,7 @@ h1 {
     box-shadow: 0 20px 45px rgba(0,0,0,.22);
 }
 
-/* Every project illustration is drawn in this HTML.
-   No img elements, image URLs or image file paths are required. */
+/* Project illustrations are drawn directly in this HTML. */
 
 .project-visual {
     min-height: 270px;
@@ -436,7 +440,7 @@ h1 {
     font-size: .68rem;
 }
 
-/* Retro photobooth: code-drawn interface */
+/* Retro photobooth */
 
 .booth-visual {
     background:
@@ -562,7 +566,7 @@ h1 {
     border-radius: 20px;
 }
 
-/* Mini ETL: code-drawn pipeline */
+/* Mini ETL pipeline */
 
 .etl-visual {
     background:
@@ -654,7 +658,7 @@ h1 {
     font-family: 'JetBrains Mono', monospace;
 }
 
-/* Data Quality Monitoring: code-drawn dashboard */
+/* Data quality dashboard */
 
 .monitor-visual {
     background:
@@ -761,7 +765,7 @@ h1 {
     background: var(--yellow);
 }
 
-/* Batch pipeline: code-drawn diagram */
+/* Batch data quality pipeline */
 
 .batch-visual {
     background:
@@ -1170,7 +1174,140 @@ footer {
     </div>
 
     <aside class="profile-card">
-        <div class="profile-monogram" aria-label="Y K initials">Y_K</div>
+
+        <!-- Scenic sunset landscape: embedded SVG, no image file needed -->
+        <div class="profile-monogram" role="img" aria-label="Scenic mountain landscape at sunset">
+            <svg
+                class="profile-landscape"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 200 200"
+                preserveAspectRatio="xMidYMid slice"
+                aria-hidden="true"
+            >
+                <defs>
+                    <linearGradient id="landscapeSky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#172c50"/>
+                        <stop offset="38%" stop-color="#755477"/>
+                        <stop offset="68%" stop-color="#f0a17e"/>
+                        <stop offset="100%" stop-color="#ffdfb0"/>
+                    </linearGradient>
+
+                    <linearGradient id="landscapeLake" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#527d91"/>
+                        <stop offset="100%" stop-color="#14263e"/>
+                    </linearGradient>
+
+                    <linearGradient id="landscapeMountain" x1="0" y1="0" x2="1" y2="1">
+                        <stop offset="0%" stop-color="#5e7b91"/>
+                        <stop offset="100%" stop-color="#293d5a"/>
+                    </linearGradient>
+
+                    <clipPath id="landscapeCircle">
+                        <circle cx="100" cy="100" r="100"/>
+                    </clipPath>
+                </defs>
+
+                <g clip-path="url(#landscapeCircle)">
+                    <!-- Evening sky -->
+                    <rect width="200" height="200" fill="url(#landscapeSky)"/>
+
+                    <!-- Distant clouds -->
+                    <path
+                        d="M-10 48 Q18 35 42 45 T92 42 T140 46 T215 34"
+                        fill="none"
+                        stroke="#f7c0b1"
+                        stroke-width="3"
+                        opacity=".3"
+                    />
+
+                    <path
+                        d="M-15 64 Q20 52 50 61 T110 58 T175 60 T220 53"
+                        fill="none"
+                        stroke="#ffd7c2"
+                        stroke-width="2"
+                        opacity=".25"
+                    />
+
+                    <!-- Setting sun -->
+                    <circle cx="145" cy="72" r="28" fill="#ffe7b5" opacity=".12"/>
+                    <circle cx="145" cy="72" r="20" fill="#ffe7b5"/>
+
+                    <!-- Distant mountains -->
+                    <path
+                        d="M-15 132 L28 83 L53 108 L91 55 L128 104 L157 76 L215 133 L215 200 L-15 200 Z"
+                        fill="#667c91"
+                    />
+
+                    <!-- Snow and light on the mountain peaks -->
+                    <path
+                        d="M91 55 L77 78 L90 72 L99 80 L109 88 L128 104 L111 75 Z"
+                        fill="#e8e9e5"
+                        opacity=".9"
+                    />
+
+                    <path
+                        d="M157 76 L145 94 L158 88 L171 100 L184 108 Z"
+                        fill="#e6d8d5"
+                        opacity=".7"
+                    />
+
+                    <!-- Foreground mountain range -->
+                    <path
+                        d="M-15 143 L23 112 L47 130 L83 102 L111 132 L143 103 L178 131 L215 108 L215 200 L-15 200 Z"
+                        fill="url(#landscapeMountain)"
+                    />
+
+                    <!-- Lake -->
+                    <path
+                        d="M0 143 Q35 135 65 145 T130 143 T200 139 L200 200 L0 200 Z"
+                        fill="url(#landscapeLake)"
+                    />
+
+                    <!-- Sunset reflection -->
+                    <path
+                        d="M125 145 L169 145 L180 150 L119 150 Z"
+                        fill="#ffd6ac"
+                        opacity=".75"
+                    />
+
+                    <path
+                        d="M136 156 L176 156 L164 160 L130 160 Z"
+                        fill="#f4b89f"
+                        opacity=".65"
+                    />
+
+                    <path
+                        d="M110 166 L187 166 L175 169 L119 169 Z"
+                        fill="#ffd8b5"
+                        opacity=".5"
+                    />
+
+                    <path
+                        d="M146 178 L170 178 L183 181 L137 181 Z"
+                        fill="#9bb9c4"
+                        opacity=".6"
+                    />
+
+                    <!-- Lake ripples -->
+                    <path
+                        d="M8 158 Q25 155 43 158 M24 174 Q43 171 60 174 M8 188 Q29 185 49 188 M76 183 Q91 180 105 183"
+                        fill="none"
+                        stroke="#b1d0d8"
+                        stroke-width="1.5"
+                        opacity=".5"
+                    />
+
+                    <!-- Dark pine silhouettes -->
+                    <g fill="#101d31">
+                        <path d="M-4 200 L-4 150 L-15 165 L-7 143 L-16 150 L-4 128 L8 150 L0 145 L9 165 L1 159 L1 200 Z"/>
+                        <path d="M20 200 L20 166 L11 176 L19 157 L12 163 L22 141 L32 163 L25 158 L33 177 L26 170 L26 200 Z"/>
+                        <path d="M183 200 L183 155 L172 169 L181 144 L173 151 L185 125 L198 151 L189 144 L199 168 L191 159 L191 200 Z"/>
+                        <path d="M200 200 L200 169 L193 178 L199 161 L193 166 L202 145 L211 166 L204 160 L212 179 L205 171 L205 200 Z"/>
+                    </g>
+                </g>
+            </svg>
+        </div>
+
         <h2>Yaseerah Kader</h2>
         <p>Software & Data Engineering</p>
 
@@ -1259,7 +1396,6 @@ footer {
             <div class="project-visual booth-visual">
                 <div class="booth-window">
                     <div class="booth-title">RETRO PHOTOBOOTH</div>
-
                     <div class="booth-screen"></div>
 
                     <div class="booth-strip">
@@ -1488,12 +1624,7 @@ footer {
                 </div>
 
                 <div class="project-links">
-                    <!-- <a
-                        class="button"
-                        href="https://github.com/Yaseerahk/batch-data-quality-pipeline"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >View GitHub Repository ↗</a> -->
+                    <!-- Add your GitHub repository link here when ready. -->
                 </div>
             </div>
         </article>
@@ -1636,3 +1767,4 @@ footer {
 
 </body>
 </html>
+```
